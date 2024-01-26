@@ -1,9 +1,10 @@
 [gd_scene load_steps=29 format=3 uid="uid://x233w78trjqi"]
 
-[ext_resource type="Texture2D" uid="uid://cxardpckxwi2p" path="res://pics/idle.png" id="1_vb6q4"]
-[ext_resource type="Texture2D" uid="uid://p3mhn74sirp8" path="res://pics/walk.png" id="2_2lr2m"]
-[ext_resource type="Texture2D" uid="uid://b6cn5omd7e5tj" path="res://pics/roll.png" id="2_u7ta1"]
-[ext_resource type="Texture2D" uid="uid://cfdke5761gdm6" path="res://pics/wings.png" id="3_co2ll"]
+[ext_resource type="Texture2D" uid="uid://cfjk3eo3kbfhk" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
+[ext_resource type="Texture2D" uid="uid://84yyla5yuxel" path="res://assets/pics/spritesheets/walk.png" id="2_2lr2m"]
+[ext_resource type="Texture2D" uid="uid://cinbtqsktp2sg" path="res://assets/pics/spritesheets/roll.png" id="2_u7ta1"]
+[ext_resource type="Texture2D" uid="uid://d28mmsaw01617" path="res://assets/pics/spritesheets/wings.png" id="3_co2ll"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtejp"]
 atlas = ExtResource("1_vb6q4")
