@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4odllx4m0vdi"]
+
+[ext_resource type="Script" path="res://Scripts/LukasMPTest.gd" id="1_5btix"]
+[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://player.tscn" id="2_j3iee"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5btix")
+player_scene = ExtResource("2_j3iee")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_left = 79.0
+offset_top = 117.0
+offset_right = 173.0
+offset_bottom = 148.0
+text = "Host Game"
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+offset_left = 218.0
+offset_top = 118.0
+offset_right = 305.0
+offset_bottom = 149.0
+text = "Join Game"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
