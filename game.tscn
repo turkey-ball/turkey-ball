@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4tmocoy7pa3w"]
+[gd_scene load_steps=5 format=3 uid="uid://4tmocoy7pa3w"]
 
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://arena.tscn" id="1_goens"]
+[ext_resource type="Script" path="res://game.gd" id="1_sa265"]
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://player.tscn" id="2_so3og"]
+[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://turkey.tscn" id="3_itfda"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_sa265")
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
 [node name="Player" parent="Arena" instance=ExtResource("2_so3og")]
 position = Vector2(439, 239)
 scale = Vector2(0.48, 0.48)
+
+[node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
+position = Vector2(610, 309)
