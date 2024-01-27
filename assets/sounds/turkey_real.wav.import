@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://by8iowoa3qa1f"
-path="res://.godot/imported/turkey_real.wav-7b90ba16ea4261e3f16d2d1fe138695e.sample"
+path="res://.godot/imported/turkey_real.wav-c78c163d4ad3de7474b6502193d02296.sample"
 
 [deps]
 
-source_file="res://turkey_real.wav"
-dest_files=["res://.godot/imported/turkey_real.wav-7b90ba16ea4261e3f16d2d1fe138695e.sample"]
+source_file="res://assets/sounds/turkey_real.wav"
+dest_files=["res://.godot/imported/turkey_real.wav-c78c163d4ad3de7474b6502193d02296.sample"]
 
 [params]
 
