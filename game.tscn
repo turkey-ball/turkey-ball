@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjojb4dx085sx"]
 
-[ext_resource type="PackedScene" uid="uid://bdbvr1lb257f" path="res://Scenes/arena.tscn" id="1_goens"]
+[ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://Scenes/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_sa265"]
 [ext_resource type="PackedScene" uid="uid://c6u3tewia65e0" path="res://Scenes/player.tscn" id="2_so3og"]
-[ext_resource type="PackedScene" uid="uid://da2a6grld874h" path="res://Scenes/turkey.tscn" id="3_itfda"]
+[ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_sa265")
@@ -17,3 +17,5 @@ scale = Vector2(0.48, 0.48)
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
 position = Vector2(610, 309)
 gravity_scale = 0.0
+
+[connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]

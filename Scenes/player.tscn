@@ -1,9 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=5 format=3 uid="uid://c6u3tewia65e0"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_3yj7q"]
-[ext_resource type="AudioStream" uid="uid://c58okl4t3eibr" path="res://assets/sounds/clown_laugh_woody.wav" id="2_ixyqk"]
-[ext_resource type="AudioStream" uid="uid://bel5s08wxscrn" path="res://assets/sounds/clown_loose.wav" id="3_8qmhj"]
-[ext_resource type="AudioStream" uid="uid://0vdi65qh3th3" path="res://assets/sounds/clown_win_evil_laugh.wav" id="4_q0v0m"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4sia2"]
 
@@ -33,12 +30,3 @@ shape = SubResource("RectangleShape2D_0086a")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
-
-[node name="woody" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_ixyqk")
-
-[node name="yay" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_8qmhj")
-
-[node name="win" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_q0v0m")
