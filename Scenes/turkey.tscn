@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bd3r5eky344wd"]
+[gd_scene load_steps=48 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cas6mgf6wwicn" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -268,6 +268,26 @@ radius = 41.3038
 [sub_resource type="CircleShape2D" id="CircleShape2D_htlko"]
 radius = 42.0119
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtid3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("animation:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("animation:frame")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:linear_velocity")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:angular_velocity")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
 [node name="Turkey" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_4ugma")
 gravity_scale = 0.0
@@ -304,6 +324,9 @@ collision_layer = 16
 
 [node name="player_scare_collision" type="CollisionShape2D" parent="player_scare_area"]
 shape = SubResource("CircleShape2D_htlko")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dtid3")
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="body_entered" from="player_interaction_area" to="." method="_on_area_2d_body_entered"]

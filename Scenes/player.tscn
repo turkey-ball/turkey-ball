@@ -8,14 +8,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
 size = Vector2(145, 235)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia2kn"]
 atlas = ExtResource("2_av50b")
 region = Rect2(0, 0, 531, 536)
@@ -174,14 +166,19 @@ height = 176.102
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqyve"]
 radius = 187.024
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3yj7q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0086a")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 0)
@@ -199,6 +196,9 @@ collision_layer = 16
 
 [node name="surrounding" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_oqyve")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
 [connection signal="child_entered_tree" from="feet" to="." method="_on_feet_child_entered_tree"]
 [connection signal="child_entered_tree" from="Area2D/surrounding" to="." method="_on_surrounding_child_entered_tree"]

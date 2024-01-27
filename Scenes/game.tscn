@@ -1,24 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjojb4dx085sx"]
+[gd_scene load_steps=8 format=3 uid="uid://bjojb4dx085sx"]
 
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://Scenes/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_sa265"]
 [ext_resource type="PackedScene" uid="uid://cpfxhrak2cyuc" path="res://Scenes/UI.tscn" id="2_3fona"]
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_so3og"]
 [ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
+[ext_resource type="PackedScene" uid="uid://bif7wx7fve6rw" path="res://Scenes/turkey_k.tscn" id="4_q7i6o"]
+[ext_resource type="PackedScene" uid="uid://bho77fpu7m2gc" path="res://LukasZeugs/MP2/LKMPMenuTest.tscn" id="5_lty0h"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_sa265")
+player_scene = ExtResource("2_so3og")
+turkey_scene = ExtResource("3_itfda")
+turkey_scene2 = ExtResource("4_q7i6o")
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
-
-[node name="Player" parent="Arena" instance=ExtResource("2_so3og")]
-position = Vector2(423, 233)
-scale = Vector2(0.48, 0.48)
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
 position = Vector2(800, 500)
 
+[node name="SpawnPoints" type="Node2D" parent="Arena"]
+
+[node name="SP1" type="Node2D" parent="Arena/SpawnPoints"]
+position = Vector2(349, 503)
+
+[node name="SP2" type="Node2D" parent="Arena/SpawnPoints"]
+position = Vector2(1313, 503)
+
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
+
+[node name="LkmpMenuTest" parent="." instance=ExtResource("5_lty0h")]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/player.tscn", "res://Scenes/turkey.tscn")
+spawn_path = NodePath("../Arena/SpawnPoints")
+
+[node name="ChaosMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 42.0
+
+[node name="ACTIVATE" type="CheckBox" parent="ChaosMenu"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+text = "Chaos"
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
 [connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]
+[connection signal="toggled" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_toggled"]
