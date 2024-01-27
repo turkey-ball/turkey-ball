@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8usa6jwskw7k" path="res://assets/pics/spritesheets/clown_walk.png" id="4_n1act"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
-size = Vector2(145, 227)
+size = Vector2(85.5, 113)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia2kn"]
 atlas = ExtResource("2_av50b")
@@ -169,21 +169,27 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("animation:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("animation:frame")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4cv8"]
-radius = 36.0134
-height = 176.102
+radius = 13.1255
+height = 85.7538
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3yj7q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_0086a")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(0.516478, 0.516478)
+position = Vector2(14, 8)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
 animation = &"walk"
 <<<<<<< Updated upstream
@@ -204,15 +210,17 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="surrounding" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_oqyve")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
 [node name="feet_area" type="Area2D" parent="."]
+position = Vector2(11, -1)
 
 [node name="feet" type="CollisionShape2D" parent="feet_area"]
-position = Vector2(1, 70)
+position = Vector2(-14, 34)
 rotation = 1.53764
 shape = SubResource("CapsuleShape2D_u4cv8")
 

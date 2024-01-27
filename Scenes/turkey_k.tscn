@@ -322,7 +322,7 @@ stream = ExtResource("5_w37co")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 2)
-scale = Vector2(0.366667, 0.366667)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qr73g")
 animation = &"wingflap"
 frame_progress = 0.586191
