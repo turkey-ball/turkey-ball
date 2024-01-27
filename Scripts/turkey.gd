@@ -83,6 +83,9 @@ func _on_animation_animation_finished():
 		position = turkeyStartPosition
 		$animation.play("idle")
 		status = 0
+		linear_velocity = Vector2(0,0)
+		angular_velocity = 0.0
+		
 
 func _on_player_kick_turkey(pos):	
 	linear_velocity = Vector2(0,0)

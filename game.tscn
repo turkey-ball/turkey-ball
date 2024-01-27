@@ -17,7 +17,6 @@ scale = Vector2(0.48, 0.48)
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
 position = Vector2(800, 500)
-gravity_scale = 0.0
 
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
 visible = false
