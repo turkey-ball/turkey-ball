@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8usa6jwskw7k" path="res://assets/pics/spritesheets/clown_walk.png" id="4_n1act"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
-size = Vector2(145, 235)
+size = Vector2(145, 227)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
 properties/0/path = NodePath(".:position")
@@ -178,16 +178,20 @@ radius = 187.024
 script = ExtResource("1_3yj7q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21.5)
 shape = SubResource("RectangleShape2D_0086a")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 0)
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.516478, 0.516478)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
-animation = &"kick"
+animation = &"walk"
+frame = 1
+frame_progress = 0.416539
+offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="feet" type="CollisionShape2D" parent="."]
 position = Vector2(1, 70)
