@@ -187,7 +187,7 @@ replication_config = SubResource("SceneReplicationConfig_s4uwx")
 position = Vector2(32, 0)
 scale = Vector2(0.516478, 0.516478)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
-animation = &"walk"
+animation = &"kick"
 
 [node name="feet" type="CollisionShape2D" parent="."]
 position = Vector2(1, 70)
