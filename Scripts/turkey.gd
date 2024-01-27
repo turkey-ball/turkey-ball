@@ -6,15 +6,13 @@ const TURKEY_WEIGHT = 1
 var rnd = RandomNumberGenerator.new()
 var rnd_nmb1 = rnd.randf_range(-1.0, 1.0)
 var rnd_nmb2 = rnd.randf_range(-1.0, 1.0)
+var turkeyStartPosition = Vector2(610,309)
 # 0: idle
 # 1: move random
 # 2: moves from player
 # 3: get's kicked / flyes away
 
 func _ready():
-	#$scream1.play()
-	#await $scream1.finished
-	#$scream2.play()
 	pass
 
 	
@@ -39,6 +37,8 @@ func _process(_delta):
 		#linear_velocity = Vector2(0,0)
 		#status = 0
 
+	if $animation.animation == "explosion":
+		return
 	if status == 0:
 		$animation.play("idle")
 		idle_time += 1
@@ -80,7 +80,8 @@ func _on_area_2d_body_entered(body:Node2D):
 
 func _on_animation_animation_finished():
 	if $animation.animation == "explosion":
-		queue_free()
+		position = turkeyStartPosition
+		$animation.play("idle")
 
 func _on_player_kick_turkey(pos):	
 	linear_velocity = Vector2(0,0)
@@ -93,7 +94,7 @@ func _on_player_kick_turkey(pos):
 		
 
 
-func _on_player_scare_collision_child_entered_tree(node):
+func _on_player_scare_collision_child_entered_tree(_node):
 	print("scared")
 	status = 2
 	rnd_nmb1 = rnd.randf_range(-1.0, 1.0)*0.1

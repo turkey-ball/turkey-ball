@@ -33,11 +33,5 @@ func _on_arena_goal_hit(side):
 		$Ui.score_l += 1
 	elif side == 'right':
 		$Ui.score_r += 1
-	$Arena/Turkey.explode()
+	activeTurkey.explode()
 
-
-func _on_turkey_tree_exited():
-	var scene = load("res://Scenes/turkey.tscn")
-	var instance = scene.instantiate()
-	add_child(instance)
-	activeTurkey = instance
