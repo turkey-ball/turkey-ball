@@ -4,6 +4,7 @@ extends RigidBody2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
 """
 var speed: float = 0.1
 
@@ -19,3 +20,13 @@ func _integrate_forces(state):
 	var target_position = $Turkey.global_transform.origin
 	look_follow(state, global_transform, target_position)
 """
+func _integrate_forces(_state):
+	pass
+
+func _on_area_2d_body_entered(body:Node2D):
+	print(body)
+	if body.name == "Player":
+		linear_velocity = Vector2(0,0)
+		var new_direction = position - body.position
+		apply_impulse(new_direction * 10)
+		pass

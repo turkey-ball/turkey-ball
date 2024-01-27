@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://x233w78trjqi"]
+[gd_scene load_steps=42 format=3 uid="uid://da2a6grld874h"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://brjbymwbrm5fv" path="res://assets/pics/spritesheets/wings.png" id="3_co2ll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
-radius = 25.9422
+radius = 32.28
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
@@ -257,6 +257,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4w26h"]
+radius = 41.3038
+
 [node name="Turkey" type="RigidBody2D"]
 script = ExtResource("1_ltaqm")
 
@@ -269,8 +272,16 @@ scale = Vector2(39, 39)
 texture = SubResource("PlaceholderTexture2D_73ost")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_qr73g")
 animation = &"explosion"
 frame = 5
 frame_progress = 0.237216
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4w26h")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
