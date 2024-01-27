@@ -18,7 +18,7 @@ func _on_animation_animation_finished():
 		$animation.pause()
 
 
-func _process(delta):
+func _process(_delta):
 	
 	if $animation.animation == "kick" :
 		print($animation.animation)
