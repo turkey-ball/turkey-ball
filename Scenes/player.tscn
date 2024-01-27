@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=29 format=3 uid="uid://dsilfbvb5t08r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_3yj7q"]
 [ext_resource type="Texture2D" uid="uid://1jijl5y5y1rn" path="res://assets/pics/spritesheets/clown_kick.png" id="2_av50b"]
