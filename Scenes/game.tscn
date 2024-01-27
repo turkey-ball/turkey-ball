@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_so3og"]
 [ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 [ext_resource type="PackedScene" uid="uid://bif7wx7fve6rw" path="res://Scenes/turkey_k.tscn" id="4_q7i6o"]
-[ext_resource type="PackedScene" uid="uid://bho77fpu7m2gc" path="res://LukasZeugs/MP2/LKMPMenuTest.tscn" id="5_lty0h"]
+[ext_resource type="PackedScene" uid="uid://bho77fpu7m2gc" path="res://Scenes/Menu.tscn" id="5_lty0h"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_sa265")

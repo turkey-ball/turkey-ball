@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bho77fpu7m2gc"]
 
-[ext_resource type="Script" path="res://LukasZeugs/MP2/LKMPMenuTest.gd" id="1_wnsym"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_wnsym"]
 
-[node name="LkmpMenuTest" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
