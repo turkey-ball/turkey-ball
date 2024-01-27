@@ -29,19 +29,19 @@ autoplay = true
 [node name="background_sound2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_v2gyn")
 
-[node name="Goal L" type="Area2D" parent="."]
+[node name="GoalL" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal L"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalL"]
 position = Vector2(243.523, 290.155)
 shape = SubResource("RectangleShape2D_qhgol")
 
-[node name="Goal R" type="Area2D" parent="."]
+[node name="GoalR" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal R"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalR"]
 position = Vector2(1010.36, 315.026)
 shape = SubResource("RectangleShape2D_qhgol")
 
-[connection signal="body_entered" from="Goal L" to="." method="_on_goal_l_body_entered"]
-[connection signal="body_entered" from="Goal R" to="." method="_on_goal_r_body_entered"]
+[connection signal="body_entered" from="GoalL" to="." method="_on_goal_l_body_entered"]
+[connection signal="body_entered" from="GoalR" to="." method="_on_goal_r_body_entered"]
