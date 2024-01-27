@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://bho77fpu7m2gc"]
+
+[ext_resource type="Script" path="res://LukasZeugs/MP2/LKMPMenuTest.gd" id="1_wnsym"]
+
+[node name="LkmpMenuTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wnsym")
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 85.0
+offset_right = 173.0
+offset_bottom = 116.0
+text = "Host Game"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 89.0
+offset_right = 323.0
+offset_bottom = 120.0
+text = "Join Game"
+
+[node name="SingleGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 142.0
+offset_right = 211.0
+offset_bottom = 173.0
+disabled = true
+text = "Start Single Game"
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="SingleGame" to="." method="_on_single_game_pressed"]

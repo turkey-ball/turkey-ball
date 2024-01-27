@@ -45,7 +45,7 @@ text = "sdjghfvdnshfghhn"
 placeholder_text = "shjgdfhjsdgfhj"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://LukasZeugs/player.tscn")
+_spawnable_scenes = PackedStringArray("res://LukasZeugs/MP1/player.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]

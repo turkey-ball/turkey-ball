@@ -81,7 +81,7 @@ func _integrate_forces(_state):
 
 func _on_area_2d_body_entered(body:Node2D):
 	print(body)
-	if body.name == "Player":
+	if body.name == "Player"|| typeof(CharacterBody2D) :
 		linear_velocity = Vector2(0,0)
 		var new_direction = position - body.position
 		linear_velocity = new_direction

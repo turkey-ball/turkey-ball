@@ -33,6 +33,7 @@ text = "test"
 label_settings = SubResource("LabelSettings_ku1yl")
 
 [node name="ScoreR" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1206.0
 offset_top = 25.0
 offset_right = 1399.0
