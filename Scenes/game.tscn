@@ -37,7 +37,7 @@ offset_bottom = 2.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/player.tscn", "res://Scenes/turkey.tscn")
-spawn_path = NodePath("../Arena/SpawnPoints")
+spawn_path = NodePath("..")
 
 [node name="ChaosMenu" type="Control" parent="."]
 layout_mode = 3
@@ -54,5 +54,4 @@ offset_bottom = 24.0
 text = "Chaos"
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
-[connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]
 [connection signal="toggled" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_toggled"]
