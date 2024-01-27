@@ -15,6 +15,6 @@ func _on_join_pressed():
 
 
 # Single Player Spiel starten??
-func _on_single_game_pressed():
-	load(res://game.tscn)
+#func _on_single_game_pressed():
+	#load(res://game.tscn)
 	# pass # Replace with function body.

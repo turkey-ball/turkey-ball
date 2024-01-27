@@ -5,9 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _init():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-	
-func _ready():
-	$animation.play("laugh")
+
 # Von: Lukas
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
@@ -54,6 +52,7 @@ func _on_feet_child_entered_tree(node):
 ### Multiplayer ###
 @export var myplayerid:int
 func _ready():
+	$animation.play("laugh")
 	#get_node("AnimatedSprite2D").play("default")
 	
 	# Problem "gelöst". So kann er die Spawnpunkte abfangen und setzen.
@@ -101,4 +100,4 @@ func _on_animation_animation_looped():
 	if $animation.animation == "kick":
 		$animation.play("laugh")
 	pass # Replace with function body.
-
+	

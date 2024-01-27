@@ -13,9 +13,9 @@ func _process(delta):
 
 
 func _on_goal_r_body_entered(body:Node2D):
-	if body.name == "Turkey":
+	if body.name == "Turkey" || body.name.contains("Turkey") || "Turkey" in body.name:
 		goal_hit.emit("right")
 
 func _on_goal_l_body_entered(body:Node2D):
-	if body.name == "Turkey":
+	if body.name == "Turkey" || body.name.contains("Turkey") || "Turkey" in body.name:
 		goal_hit.emit("left")
