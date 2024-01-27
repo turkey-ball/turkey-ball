@@ -20,13 +20,10 @@ func _ready():
 	position.x = screen_size.x / 2
 	position.y = screen_size.y / 2
 	name = "Turkey"
+	$gubbelgubbel.play()
 	pass
 
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#print(constant_force)
-	#print(rotation_degrees)
 	apply_torque(rotation_degrees*-0.5)
 	var slow = 60
 	
@@ -36,13 +33,6 @@ func _process(_delta):
 		$animation.flip_h = false
 	if abs(linear_velocity[0]) < slow and abs(linear_velocity[1]) < slow:
 		moving = false
-
-	if (rotation_degrees > -3 and rotation_degrees < 3 and !moving):
-		#print ("change status")
-		print ("aktueller status: ", status)
-		#rotation = 0
-		#linear_velocity = Vector2(0,0)
-		#status = 0
 
 	if $animation.animation == "explosion":
 		return
@@ -63,13 +53,10 @@ func _process(_delta):
 	elif status == 3:		
 		moving = true
 		$animation.play("wingflap", 1.5) # je nach härte des kicks anpassbar
-		#if (velocity < 0.5):
-			#status = 0
-			#idle_time = 0		
-	pass
 
 func explode():
 	$animation.play("explosion")
+	$scream2.play()
 
 # IT'S A FEATURE
 @export var haveChaosMode = false
@@ -96,6 +83,7 @@ func _on_animation_animation_finished():
 		status = 0
 		linear_velocity = Vector2(0,0)
 		angular_velocity = 0.0
+		$gubbelgubbel.play()
 		
 
 func _on_player_kick_turkey(pos):	
