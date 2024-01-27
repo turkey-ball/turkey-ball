@@ -11,17 +11,18 @@ func _ready():
 	#$scream1.play()
 	#await $scream1.finished
 	#$scream2.play()
-	collsion()
 	pass
-	
-func collsion():
-	# muss halt noch in die richtige func verschoben werden
-	$scream1.play()
-	$animation.play("wingflap")
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	print(rotation_degrees)
+	if rotation_degrees > 1:
+		rotation_degrees -= _delta*5
+	elif rotation_degrees < -1:
+		rotation_degrees += _delta*5
+	if rotation_degrees > -3 and rotation_degrees < 3:
+		status = 0
 	if status == 0:
 		$animation.play("idle")
 		idle_time += 1
@@ -70,4 +71,7 @@ func _on_area_2d_body_entered(body:Node2D):
 		linear_velocity = Vector2(0,0)
 		var new_direction = position - body.position
 		apply_impulse(new_direction * 10)
+		$scream1.play()	
+		status = 3
+		
 		pass
