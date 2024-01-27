@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://dsilfbvb5t08r"]
+
+[ext_resource type="Script" path="res://LukasZeugs/player.gd" id="1_656ek"]
+[ext_resource type="Texture2D" uid="uid://y6qtumexj4dg" path="res://assets/pics/spritesheets/walk.png" id="2_jb575"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4sia2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppqfu"]
+atlas = ExtResource("2_jb575")
+region = Rect2(0, 0, 330, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmpjg"]
+atlas = ExtResource("2_jb575")
+region = Rect2(330, 0, 330, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ss5"]
+atlas = ExtResource("2_jb575")
+region = Rect2(660, 0, 330, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g6y8"]
+atlas = ExtResource("2_jb575")
+region = Rect2(990, 0, 330, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shtu3"]
+atlas = ExtResource("2_jb575")
+region = Rect2(1320, 0, 330, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evj0w"]
+atlas = ExtResource("2_jb575")
+region = Rect2(1650, 0, 330, 260)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i26s0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppqfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmpjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ss5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g6y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shtu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evj0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
+size = Vector2(145, 235)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_656ek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(76, 118)
+scale = Vector2(144.5, 234.5)
+texture = SubResource("PlaceholderTexture2D_4sia2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i26s0")
+frame_progress = 0.14176
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(76, 118)
+shape = SubResource("RectangleShape2D_0086a")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_s4uwx")

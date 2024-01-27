@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4odllx4m0vdi"]
 
 [ext_resource type="Script" path="res://Scripts/LukasMPTest.gd" id="1_5btix"]
-[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://player.tscn" id="2_j3iee"]
+[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://LukasZeugs/player.tscn" id="2_j3iee"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5btix")

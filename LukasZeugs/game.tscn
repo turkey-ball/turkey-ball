@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://4tmocoy7pa3w"]
+
+[ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://LukasZeugs/arena.tscn" id="1_goens"]
+[ext_resource type="Script" path="res://LukasZeugs/game.gd" id="1_hpn51"]
+[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://LukasZeugs/player.tscn" id="2_0ktil"]
+[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://turkey.tscn" id="3_itfda"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_hpn51")
+player_scene = ExtResource("2_0ktil")
+
+[node name="Arena" parent="." instance=ExtResource("1_goens")]
+
+[node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
+position = Vector2(610, 309)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host Game"
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+offset_left = 147.0
+offset_top = 2.0
+offset_right = 234.0
+offset_bottom = 33.0
+text = "Join Game"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 61.0
+offset_top = 63.0
+offset_right = 461.0
+offset_bottom = 247.0
+text = "sdjghfvdnshfghhn"
+placeholder_text = "shjgdfhjsdgfhj"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://LukasZeugs/player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
