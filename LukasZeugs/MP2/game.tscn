@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://w8tt1k2xdja3" path="res://LukasZeugs/MP2/player.tscn" id="2_g2tch"]
 [ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 [ext_resource type="PackedScene" uid="uid://ehrbn26hbp7k" path="res://LukasZeugs/MP2/turkey.tscn" id="3_k57tc"]
-[ext_resource type="PackedScene" uid="uid://bif7wx7fve6rw" path="res://LukasZeugs/MP2/turkey_k.tscn" id="4_ku6fd"]
+[ext_resource type="PackedScene" uid="uid://bif7wx7fve6rw" path="res://Scenes/turkey_k.tscn" id="4_ku6fd"]
 [ext_resource type="PackedScene" uid="uid://bho77fpu7m2gc" path="res://LukasZeugs/MP2/LKMPMenuTest.tscn" id="6_21x1v"]
 
 [node name="Game2" type="Node"]
