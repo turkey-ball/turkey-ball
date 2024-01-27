@@ -61,8 +61,8 @@ func _process(_delta):
 			#idle_time = 0		
 	pass
 
-func _integrate_forces(_state):
-	pass
+func explode():
+	$animation.play("explosion")
 
 func _on_area_2d_body_entered(body:Node2D):
 	print(body)
@@ -74,5 +74,9 @@ func _on_area_2d_body_entered(body:Node2D):
 		inertia = TURKEY_WEIGHT		
 		$scream1.play()	
 		status = 3
-		
 		pass
+
+
+func _on_animation_animation_finished():
+	if $animation.animation == "explosion":
+		queue_free()

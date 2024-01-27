@@ -22,3 +22,4 @@ gravity_scale = 0.0
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
+[connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]

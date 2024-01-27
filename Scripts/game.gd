@@ -2,13 +2,14 @@ extends Node
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var activeTurkey: RigidBody2D = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	activeTurkey = $Turkey
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -32,3 +33,11 @@ func _on_arena_goal_hit(side):
 		$Ui.score_l += 1
 	elif side == 'right':
 		$Ui.score_r += 1
+	$Arena/Turkey.explode()
+
+
+func _on_turkey_tree_exited():
+	var scene = load("res://Scenes/turkey.tscn")
+	var instance = scene.instantiate()
+	add_child(instance)
+	activeTurkey = instance
