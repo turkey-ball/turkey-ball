@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsilfbvb5t08r"]
 
-[ext_resource type="Script" path="res://LukasZeugs/player.gd" id="1_656ek"]
+[ext_resource type="Script" path="res://LukasZeugs/MP1/player.gd" id="1_656ek"]
 [ext_resource type="Texture2D" uid="uid://y6qtumexj4dg" path="res://assets/pics/spritesheets/walk.png" id="2_jb575"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4sia2"]

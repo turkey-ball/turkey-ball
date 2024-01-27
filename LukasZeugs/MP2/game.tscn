@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv5500jqonpk8"]
+
+[ext_resource type="Script" path="res://LukasZeugs/MP2/game.gd" id="1_1eae4"]
+[ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://Scenes/arena.tscn" id="1_goens"]
+[ext_resource type="PackedScene" uid="uid://cpfxhrak2cyuc" path="res://Scenes/UI.tscn" id="2_3fona"]
+[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_so3og"]
+[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://Scenes/turkey.tscn" id="3_itfda"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_1eae4")
+
+[node name="Arena" parent="." instance=ExtResource("1_goens")]
+
+[node name="Player" parent="Arena" instance=ExtResource("2_so3og")]
+position = Vector2(423, 233)
+scale = Vector2(0.48, 0.48)
+
+[node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
+position = Vector2(610, 309)
+gravity_scale = 0.0
+
+[node name="Ui" parent="." instance=ExtResource("2_3fona")]
+
+[connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
