@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _init():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-
-# Von: Lukas
+	
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
@@ -30,30 +32,12 @@ func _process(_delta):
 	else :
 		$animation.pause()
 
-# Beispiel ist in 3D. Welche Cam in 2D. Dazu noche exit game qenn input 'quit
-# und physics process when multiplayer authority ...
-# https://www.youtube.com/watch?v=M0LJ9EsS_Ak
-#func _ready():
-#	cam.current = is_multiplayer_authority()
-
-'''
-signal scare_turkey(pos: Vector2)
-signal kick_turkey(pos: Vector2)
-func _on_surrounding_child_entered_tree(node):
-	if node.name == "Turkey":
-
-		scare_turkey.emit(position)
-
-func _on_feet_child_entered_tree(node):
-	if node.name == "Turkey":
-		kick_turkey.emit(position)
-'''
-
 ### Multiplayer ###
 @export var myplayerid:int
 func _ready():
 	$animation.play("laugh")
 	#get_node("AnimatedSprite2D").play("default")
+	$animation.play("laugh")
 	
 	# Problem "gelöst". So kann er die Spawnpunkte abfangen und setzen.
 	var sp1 = $"../"/Arena/SpawnPoints/SP1
@@ -63,13 +47,6 @@ func _ready():
 		position = sp1.position
 	else: # id = 0??
 		position = sp2.position
-
-### Controller ###
-# INFO: Spieler werden durch mein Script mit IDs hinzugefügt, daher kann die
-# Steuerung nicht in game.gd liegen.
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 func _physics_process(_delta):
 	if !is_multiplayer_authority():
