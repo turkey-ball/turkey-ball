@@ -16,16 +16,13 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-76, -118)
 script = ExtResource("1_3yj7q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(76, 118)
 scale = Vector2(144.5, 234.5)
 texture = SubResource("PlaceholderTexture2D_4sia2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(76, 118)
 shape = SubResource("RectangleShape2D_0086a")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
