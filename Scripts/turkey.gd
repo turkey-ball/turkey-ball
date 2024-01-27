@@ -20,8 +20,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	print(constant_force)
-	print(rotation_degrees)
+	#print(constant_force)
+	#print(rotation_degrees)
 	apply_torque(rotation_degrees*-0.5)
 	var slow = 60
 	
@@ -33,7 +33,7 @@ func _process(_delta):
 		moving = false
 
 	if (rotation_degrees > -3 and rotation_degrees < 3 and !moving):
-		print ("change status")
+		#print ("change status")
 		print ("aktueller status: ", status)
 		#rotation = 0
 		#linear_velocity = Vector2(0,0)
@@ -52,7 +52,7 @@ func _process(_delta):
 		apply_impulse(Vector2(rnd_nmb1,rnd_nmb2))
 	elif status == 2:
 		$animation.play("walk")
-
+		apply_impulse(Vector2(rnd_nmb1,rnd_nmb2))
 	elif status == 3:		
 		moving = true
 		$animation.play("wingflap", 1.5) # je nach härte des kicks anpassbar
@@ -64,6 +64,7 @@ func _process(_delta):
 func explode():
 	$animation.play("explosion")
 
+<<<<<<< Updated upstream
 func _on_area_2d_body_entered(body:Node2D):
 	print(body)
 	if body.name == "Player":
@@ -80,3 +81,22 @@ func _on_area_2d_body_entered(body:Node2D):
 func _on_animation_animation_finished():
 	if $animation.animation == "explosion":
 		queue_free()
+=======
+func _on_player_kick_turkey(pos):	
+	linear_velocity = Vector2(0,0)
+	var new_direction = position - pos
+	linear_velocity = new_direction
+	apply_impulse(new_direction * 3)
+	inertia = TURKEY_WEIGHT		
+	$scream1.play()	
+	status = 3
+		
+
+
+func _on_player_scare_collision_child_entered_tree(node):
+	print("scared")
+	status = 2
+	rnd_nmb1 = rnd.randf_range(-1.0, 1.0)*0.1
+	rnd_nmb2 = rnd.randf_range(-1.0, 1.0)*0.1
+
+>>>>>>> Stashed changes
