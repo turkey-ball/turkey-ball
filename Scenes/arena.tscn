@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://s36l2vrgxmdi"]
+[gd_scene load_steps=2 format=3 uid="uid://bdbvr1lb257f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8kl0h"]
 
@@ -12,4 +12,4 @@ texture = SubResource("CanvasTexture_8kl0h")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(200, 230, 397, 163, 838, 158, 1018, 275, 913, 486, 538, 523, 275, 420, 199, 230, 0, 234, 0, 646, 1157, 646, 1153, 1, 3, 1, 2, 231)
+polygon = PackedVector2Array(200, 230, 308, 92, 571, 32, 908, 106, 1018, 275, 913, 486, 616, 524, 251, 458, 199, 230, 0, 234, 0, 646, 1157, 646, 1153, 1, 3, 1, 2, 231)
