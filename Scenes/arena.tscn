@@ -1,25 +1,28 @@
 [gd_scene load_steps=6 format=3 uid="uid://s36l2vrgxmdi"]
 
 [ext_resource type="Script" path="res://Scripts/arena.gd" id="1_6hnq8"]
+[ext_resource type="Texture2D" uid="uid://3lja6v4xchsm" path="res://assets/pics/background.png" id="2_84uby"]
 [ext_resource type="AudioStream" uid="uid://88efe6jy8qub" path="res://assets/sounds/background.wav" id="2_d8ia7"]
-[ext_resource type="Texture2D" uid="uid://cu5gcl81k06gm" path="res://assets/pics/Spielfeld2.png" id="2_h1eli"]
 [ext_resource type="AudioStream" uid="uid://jnwcsa8beexv" path="res://assets/sounds/background2.wav" id="3_v2gyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgol"]
-size = Vector2(14.5077, 258.201)
+size = Vector2(15.7786, 258.201)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_6hnq8")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_right = 1600.0
-offset_bottom = 1000.0
-texture = ExtResource("2_h1eli")
+offset_left = -62.0
+offset_top = -2.0
+offset_right = 1730.0
+offset_bottom = 1022.0
+texture = ExtResource("2_84uby")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(190, 869, 325, 213, 356, 192, 386, 170, 1233, 170, 1294, 215, 1435, 870, 1390, 964, 660, 963, 251, 961, 187, 873, 1, 348, -2, 999, 1602, 1001, 1602, 2, 3, 1, -1, 347)
+position = Vector2(-61, 0)
+polygon = PackedVector2Array(1431, 203, 1599, 892, 1540, 961, 260, 966, 198, 874, 263.862, 585.153, 351, 203, 420, 162, 3, 4, 3, 1023, 1792, 1023, 1787, -4, 3, 1, 420, 164, 1362, 162)
 
 [node name="background_sound1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_d8ia7")
@@ -32,16 +35,17 @@ stream = ExtResource("3_v2gyn")
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalL"]
-position = Vector2(279.436, 533.032)
-skew = 0.188495
+position = Vector2(238.342, 524.352)
+scale = Vector2(1, 1)
+skew = 0.223402
 shape = SubResource("RectangleShape2D_qhgol")
 
 [node name="GoalR" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalR"]
-position = Vector2(1402.07, 533.679)
-skew = -0.207694
+position = Vector2(1489.12, 526.425)
+skew = -0.235619
 shape = SubResource("RectangleShape2D_qhgol")
 
 [connection signal="body_entered" from="GoalL" to="." method="_on_goal_l_body_entered"]
