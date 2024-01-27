@@ -11,7 +11,8 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
-	$"../"._on_join_pressed()
+	var ip = $IpOverrideField.text
+	$"../"._on_join_pressed(ip)
 
 
 # Single Player Spiel starten??
