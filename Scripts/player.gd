@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _init():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	#$animation.play("walk")
 
 # Von: Lukas
 func _enter_tree():
@@ -16,3 +17,13 @@ func _enter_tree():
 # https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 #func _ready():
 #	cam.current = is_multiplayer_authority()
+
+signal scare_turkey(pos: Vector2)
+signal kick_turkey(pos: Vector2)
+func _on_surrounding_child_entered_tree(node):
+	if node.name == "Turkey":
+		scare_turkey.emit(position)
+
+func _on_feet_child_entered_tree(node):
+	if node.name == "Turkey":
+		kick_turkey.emit(position)
