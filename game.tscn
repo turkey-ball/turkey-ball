@@ -16,10 +16,11 @@ position = Vector2(423, 233)
 scale = Vector2(0.48, 0.48)
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
-position = Vector2(610, 309)
+position = Vector2(800, 500)
 gravity_scale = 0.0
 
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
+visible = false
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
 [connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]
