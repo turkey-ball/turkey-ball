@@ -15,7 +15,6 @@ player_scene = ExtResource("2_g2tch")
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
 position = Vector2(610, 309)
-gravity_scale = 0.0
 
 [node name="SpawnPoints" type="Node2D" parent="Arena"]
 
@@ -33,4 +32,17 @@ position = Vector2(908, 306)
 _spawnable_scenes = PackedStringArray("res://LukasZeugs/MP2/player.tscn")
 spawn_path = NodePath("..")
 
+[node name="ChaosMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ACTIVATE" type="CheckBox" parent="ChaosMenu"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+text = "Chaos"
+
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
+[connection signal="toggled" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_toggled"]

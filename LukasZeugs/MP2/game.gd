@@ -60,7 +60,7 @@ func add_player(id = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	player.myplayerid = id
-			
+	
 	print("Player added: " + str(id))
 	print("=> Player position: " + str(player.position) + ", VP-Size: " + str(get_viewport().size))
 	call_deferred("add_child", player)
@@ -75,3 +75,11 @@ func del_player(id):
 @rpc("any_peer", "call_local")
 func _del_player(id):
 	get_node(str(id)).queue_free()
+
+
+func _on_activate_toggled(toggled_on):
+	print("toggle:" + str(toggled_on))
+	
+	var tk = $Arena/Turkey
+	tk.haveChaosMode = toggled_on
+	pass # Replace with function body.
