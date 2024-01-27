@@ -89,3 +89,12 @@ func _on_activate_toggled(toggled_on):
 	var tk = $Arena/Turkey
 	tk.haveChaosMode = toggled_on
 	pass # Replace with function body.
+
+
+### Singleplayer ###
+func _on_single_game_pressed():
+	$LkmpMenuTest.hide()
+	$Arena.show()
+	$Ui.show()
+	$Ui/ScoreL.hide()
+	add_player()

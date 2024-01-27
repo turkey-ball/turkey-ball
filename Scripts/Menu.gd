@@ -19,3 +19,7 @@ func _on_join_pressed():
 #func _on_single_game_pressed():
 	#load(res://game.tscn)
 	# pass # Replace with function body.
+
+
+func _on_single_game_pressed():
+	$"../"._on_single_game_pressed()
