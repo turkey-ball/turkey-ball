@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpfxhrak2cyuc"]
+[gd_scene load_steps=5 format=3 uid="uid://cpfxhrak2cyuc"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_4d3lw"]
 
@@ -9,6 +9,10 @@ font_color = Color(1, 0.266667, 1, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_fsqqb"]
 font_size = 50
 font_color = Color(0.054902, 0.764706, 0.498039, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckqhh"]
+font_size = 50
+font_color = Color(0.486275, 0.780392, 0.752941, 1)
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -35,3 +39,12 @@ offset_right = 1399.0
 offset_bottom = 109.0
 text = "test"
 label_settings = SubResource("LabelSettings_fsqqb")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 17.0
+offset_right = 818.0
+offset_bottom = 99.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_ckqhh")
