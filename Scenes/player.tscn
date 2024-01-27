@@ -167,12 +167,12 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqyve"]
+radius = 187.024
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4cv8"]
 radius = 36.0134
 height = 176.102
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oqyve"]
-radius = 187.024
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3yj7q")
@@ -193,16 +193,21 @@ frame = 1
 frame_progress = 0.416539
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="feet" type="CollisionShape2D" parent="."]
-position = Vector2(1, 70)
-rotation = 1.53764
-shape = SubResource("CapsuleShape2D_u4cv8")
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="surrounding" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_oqyve")
 
-[connection signal="child_entered_tree" from="feet" to="." method="_on_feet_child_entered_tree"]
+[node name="feet_area" type="Area2D" parent="."]
+
+[node name="feet" type="CollisionShape2D" parent="feet_area"]
+position = Vector2(1, 70)
+rotation = 1.53764
+shape = SubResource("CapsuleShape2D_u4cv8")
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[connection signal="animation_looped" from="animation" to="." method="_on_animation_animation_looped"]
 [connection signal="child_entered_tree" from="Area2D/surrounding" to="." method="_on_surrounding_child_entered_tree"]
+[connection signal="body_entered" from="feet_area" to="." method="_on_feet_area_body_entered"]
+[connection signal="child_entered_tree" from="feet_area/feet" to="." method="_on_feet_child_entered_tree"]

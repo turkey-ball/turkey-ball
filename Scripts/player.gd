@@ -49,3 +49,15 @@ func _on_surrounding_child_entered_tree(node):
 func _on_feet_child_entered_tree(node):
 	if node.name == "Turkey":
 		kick_turkey.emit(position)
+
+
+func _on_feet_area_body_entered(body):
+	if body.name == "Turkey":
+		$animation.play("kick")
+	pass # Replace with function body.
+
+
+func _on_animation_animation_looped():
+	if $animation.animation == "kick":
+		$animation.play("laugh")
+	pass # Replace with function body.
