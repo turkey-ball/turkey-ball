@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://x233w78trjqi"]
 
-[ext_resource type="Script" path="res://turkey.gd" id="1_ltaqm"]
+[ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
 [ext_resource type="Texture2D" uid="uid://bnjaj7ohtjina" path="res://assets/pics/spritesheets/walk.png" id="2_2lr2m"]
 [ext_resource type="Texture2D" uid="uid://b4bg7c1crlg5p" path="res://assets/pics/spritesheets/explo.png" id="2_hyh7e"]
