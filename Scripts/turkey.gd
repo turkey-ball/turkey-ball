@@ -1,8 +1,49 @@
 extends RigidBody2D
+var status = 0 
+var idle_time = 0
+var velocity = 1
+# 0: idle
+# 1: move random
+# 2: moves from player
+# 3: get's kicked / flyes away
 
+func _ready():
+	#$scream1.play()
+	#await $scream1.finished
+	#$scream2.play()
+	collsion()
+	pass
+	
+func collsion():
+	# muss halt noch in die richtige func verschoben werden
+	$scream1.play()
+	$animation.play("wingflap")
 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if status == 0:
+		$animation.play("idle")
+		idle_time += 1
+		if idle_time > 100:
+			status = 1
+	elif status == 1:
+		$animation.play("walk")					
+		if (velocity < 0.5):
+			status = 0
+			idle_time = 0
+	elif status == 2:
+		$animation.play("walk")
+		if (velocity < 0.5):
+			status = 0
+			idle_time = 0
+	elif status == 3:		
+		$animation.play("wingflap", 1.5) # je nach härte des kicks anpassbar
+		if (velocity < 0.5):
+			status = 0
+			idle_time = 0		
+			
+	
 	pass
 """
 var speed: float = 0.1

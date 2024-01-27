@@ -1,8 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://s36l2vrgxmdi"]
+[gd_scene load_steps=5 format=3 uid="uid://s36l2vrgxmdi"]
+
+[ext_resource type="Script" path="res://Scripts/arena.gd" id="1_6hnq8"]
+[ext_resource type="AudioStream" uid="uid://88efe6jy8qub" path="res://assets/sounds/background.wav" id="2_d8ia7"]
+[ext_resource type="AudioStream" uid="uid://jnwcsa8beexv" path="res://assets/sounds/background2.wav" id="3_v2gyn"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8kl0h"]
 
 [node name="Arena" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = ExtResource("1_6hnq8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1153.0
@@ -13,3 +44,10 @@ texture = SubResource("CanvasTexture_8kl0h")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(200, 230, 397, 163, 838, 158, 1018, 275, 913, 486, 538, 523, 275, 420, 199, 230, 0, 234, 0, 646, 1157, 646, 1153, 1, 3, 1, 2, 231)
+
+[node name="background_sound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_d8ia7")
+autoplay = true
+
+[node name="background_sound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v2gyn")

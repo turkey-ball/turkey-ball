@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://x233w78trjqi"]
+[gd_scene load_steps=45 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://b4bg7c1crlg5p" path="res://assets/pics/spritesheets/explo.png" id="2_hyh7e"]
 [ext_resource type="Texture2D" uid="uid://ct3xvbbhajjt2" path="res://assets/pics/spritesheets/roll.png" id="2_u7ta1"]
 [ext_resource type="Texture2D" uid="uid://brjbymwbrm5fv" path="res://assets/pics/spritesheets/wings.png" id="3_co2ll"]
+[ext_resource type="AudioStream" uid="uid://boc62wcemc4or" path="res://assets/sounds/turkey_woohoo.wav" id="7_66ddh"]
+[ext_resource type="AudioStream" uid="uid://bfqo0yi2mwrq" path="res://assets/sounds/turkey_scream2.wav" id="8_a6x2s"]
+[ext_resource type="AudioStream" uid="uid://c3gjcuypo7rr3" path="res://assets/sounds/turkey_scream1.wav" id="9_usjel"]
+[ext_resource type="AudioStream" uid="uid://cf36keampgnog" path="res://assets/sounds/turkey_walk.wav" id="10_p34m5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 25.9422
@@ -254,7 +258,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"wingflap",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [node name="Turkey" type="RigidBody2D"]
@@ -271,6 +275,18 @@ texture = SubResource("PlaceholderTexture2D_73ost")
 [node name="animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_qr73g")
-animation = &"explosion"
-frame = 5
-frame_progress = 0.237216
+animation = &"wingflap"
+frame = 3
+frame_progress = 0.821675
+
+[node name="whoohoo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_66ddh")
+
+[node name="scream2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_a6x2s")
+
+[node name="scream1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_usjel")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_p34m5")
