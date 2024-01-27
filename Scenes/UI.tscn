@@ -57,3 +57,8 @@ offset_bottom = 99.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_ckqhh")
 horizontal_alignment = 1
+
+[node name="RunType" type="Label" parent="."]
+offset_right = 20.0
+offset_bottom = 26.0
+text = "T"

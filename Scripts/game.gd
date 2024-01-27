@@ -48,6 +48,7 @@ func _on_host_pressed():
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Ui/RunType.text = "H"
 	$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
 	turkey.name = "Turkey"
@@ -59,6 +60,7 @@ func _on_join_pressed(ip = "127.0.0.1"):
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Ui/RunType.text = "C"
 	$Arena/Turkey.queue_free()
 	var turkey = turkey_scene2.instantiate()
 	turkey.name = "Turkey"
