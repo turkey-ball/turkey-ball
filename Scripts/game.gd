@@ -33,4 +33,7 @@ func _physics_process(_delta):
 
 
 func _on_arena_goal_hit(side):
-	pass # Replace with function body.
+	if side == 'left':
+		$Ui.score_l += 1
+	elif side == 'right':
+		$Ui.score_r += 1
