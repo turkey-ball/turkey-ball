@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://jnwcsa8beexv" path="res://assets/sounds/background2.wav" id="3_v2gyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgol"]
-size = Vector2(56.6451, 257.681)
+size = Vector2(14.5077, 258.201)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_6hnq8")
@@ -32,15 +32,17 @@ stream = ExtResource("3_v2gyn")
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalL"]
-position = Vector2(290.848, 526.768)
+position = Vector2(279.436, 533.032)
 scale = Vector2(1, 1)
+skew = 0.188495
 shape = SubResource("RectangleShape2D_qhgol")
 
 [node name="GoalR" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalR"]
-position = Vector2(1398.96, 533.679)
+position = Vector2(1402.07, 533.679)
+skew = -0.207694
 shape = SubResource("RectangleShape2D_qhgol")
 
 [connection signal="body_entered" from="GoalL" to="." method="_on_goal_l_body_entered"]
