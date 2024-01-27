@@ -6,7 +6,7 @@ const TURKEY_WEIGHT = 1
 var rnd = RandomNumberGenerator.new()
 var rnd_nmb1 = rnd.randf_range(-1.0, 1.0)
 var rnd_nmb2 = rnd.randf_range(-1.0, 1.0)
-var turkeyStartPosition = Vector2(610,309)
+var turkeyStartPosition = Vector2(800,500)
 # 0: idle
 # 1: move random
 # 2: moves from player
@@ -85,6 +85,10 @@ func _on_animation_animation_finished():
 	if $animation.animation == "explosion":
 		position = turkeyStartPosition
 		$animation.play("idle")
+		status = 0
+		linear_velocity = Vector2(0,0)
+		angular_velocity = 0.0
+		
 
 func _on_player_kick_turkey(pos):	
 	linear_velocity = Vector2(0,0)

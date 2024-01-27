@@ -8,11 +8,6 @@ func _ready():
 	$background_sound1.play()
 	$background_sound2.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_goal_r_body_entered(body:Node2D):
 	if body.name == "Turkey":
 		goal_hit.emit("right")
