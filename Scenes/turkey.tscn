@@ -11,10 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://c3gjcuypo7rr3" path="res://assets/sounds/turkey_scream1.wav" id="9_usjel"]
 [ext_resource type="AudioStream" uid="uid://cf36keampgnog" path="res://assets/sounds/turkey_walk.wav" id="10_p34m5"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ugma"]
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 32.28
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivoob"]
 atlas = ExtResource("2_hyh7e")
@@ -167,7 +168,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nhwv6")
 }],
-"loop": true,
+"loop": false,
 "name": &"explosion",
 "speed": 10.0
 }, {
@@ -268,16 +269,12 @@ radius = 41.3038
 radius = 42.0119
 
 [node name="Turkey" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_4ugma")
+gravity_scale = 0.0
 script = ExtResource("1_ltaqm")
 
 [node name="wall_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3lpdk")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1.5, 0.499999)
-scale = Vector2(39, 39)
-texture = SubResource("PlaceholderTexture2D_73ost")
 
 [node name="whoohoo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_66ddh")
@@ -295,7 +292,7 @@ stream = ExtResource("10_p34m5")
 position = Vector2(-2, 2)
 scale = Vector2(0.366667, 0.366667)
 sprite_frames = SubResource("SpriteFrames_qr73g")
-animation = &"explosion"
+animation = &"idle"
 
 [node name="player_interaction_area" type="Area2D" parent="."]
 
