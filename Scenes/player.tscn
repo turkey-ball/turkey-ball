@@ -186,12 +186,22 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.516478, 0.516478)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
 animation = &"walk"
+<<<<<<< Updated upstream
 frame = 1
 frame_progress = 0.416539
 offset = Vector2(2.08165e-12, 2.08165e-12)
+=======
+frame_progress = 0.825883
+
+[node name="feet" type="CollisionShape2D" parent="."]
+position = Vector2(1, 70)
+rotation = 1.53764
+shape = SubResource("CapsuleShape2D_u4cv8")
+>>>>>>> Stashed changes
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
+collision_mask = 16
 
 [node name="surrounding" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_oqyve")

@@ -266,8 +266,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w26h"]
 radius = 41.3038
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_htlko"]
-radius = 42.0119
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuw08"]
+radius = 41.4367
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtid3"]
 properties/0/path = NodePath(".:position")
@@ -339,13 +339,19 @@ shape = SubResource("CircleShape2D_4w26h")
 
 [node name="player_scare_area" type="Area2D" parent="."]
 collision_layer = 16
+collision_mask = 16
 
 [node name="player_scare_collision" type="CollisionShape2D" parent="player_scare_area"]
-shape = SubResource("CircleShape2D_htlko")
+shape = SubResource("CircleShape2D_xuw08")
 
+<<<<<<< Updated upstream
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_dtid3")
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="body_entered" from="player_interaction_area" to="." method="_on_area_2d_body_entered"]
+=======
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[connection signal="child_entered_tree" from="player_interaction_area/player_interaction_collision" to="." method="_on_player_interaction_collision_child_entered_tree"]
+>>>>>>> Stashed changes
 [connection signal="child_entered_tree" from="player_scare_area/player_scare_collision" to="." method="_on_player_scare_collision_child_entered_tree"]
