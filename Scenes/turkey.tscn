@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bd3r5eky344wd"]
+[gd_scene load_steps=47 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cas6mgf6wwicn" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -12,11 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://c3gjcuypo7rr3" path="res://assets/sounds/turkey_scream1.wav" id="9_usjel"]
 [ext_resource type="AudioStream" uid="uid://cf36keampgnog" path="res://assets/sounds/turkey_walk.wav" id="10_p34m5"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ugma"]
-bounce = 1.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 32.28
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivoob"]
 atlas = ExtResource("2_hyh7e")
@@ -169,7 +168,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nhwv6")
 }],
-"loop": false,
+"loop": true,
 "name": &"explosion",
 "speed": 10.0
 }, {
@@ -269,50 +268,17 @@ radius = 41.3038
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuw08"]
 radius = 41.4367
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtid3"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:linear_velocity")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:haveChaosMode")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath(".:inertia")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath(".:sleeping")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath(".:linear_damp")
-properties/6/spawn = true
-properties/6/replication_mode = 1
-properties/7/path = NodePath(".:angular_velocity")
-properties/7/spawn = true
-properties/7/replication_mode = 1
-properties/8/path = NodePath("animation:animation")
-properties/8/spawn = true
-properties/8/replication_mode = 1
-properties/9/path = NodePath("animation:frame")
-properties/9/spawn = true
-properties/9/replication_mode = 1
-
 [node name="Turkey" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_4ugma")
-gravity_scale = 0.0
 script = ExtResource("1_ltaqm")
-
-[node name="gubbelgubbel" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_pjqaj")
-volume_db = 15.0
-pitch_scale = 1.5
 
 [node name="wall_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3lpdk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.5, 0.499999)
+scale = Vector2(39, 39)
+texture = SubResource("PlaceholderTexture2D_73ost")
 
 [node name="whoohoo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_66ddh")
@@ -330,7 +296,7 @@ stream = ExtResource("10_p34m5")
 position = Vector2(-2, 2)
 scale = Vector2(0.366667, 0.366667)
 sprite_frames = SubResource("SpriteFrames_qr73g")
-animation = &"idle"
+animation = &"explosion"
 
 [node name="player_interaction_area" type="Area2D" parent="."]
 
@@ -344,14 +310,6 @@ collision_mask = 16
 [node name="player_scare_collision" type="CollisionShape2D" parent="player_scare_area"]
 shape = SubResource("CircleShape2D_xuw08")
 
-<<<<<<< Updated upstream
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_dtid3")
-
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
-[connection signal="body_entered" from="player_interaction_area" to="." method="_on_area_2d_body_entered"]
-=======
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="child_entered_tree" from="player_interaction_area/player_interaction_collision" to="." method="_on_player_interaction_collision_child_entered_tree"]
->>>>>>> Stashed changes
 [connection signal="child_entered_tree" from="player_scare_area/player_scare_collision" to="." method="_on_player_scare_collision_child_entered_tree"]

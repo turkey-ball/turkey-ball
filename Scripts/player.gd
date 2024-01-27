@@ -12,7 +12,7 @@ func _init():
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
-<<<<<<< Updated upstream
+
 func _on_animation_animation_finished():
 	if $animation.animation == "kick":
 		$animation.pause()
@@ -79,10 +79,10 @@ func _on_animation_animation_looped():
 		$animation.play("laugh")
 	pass # Replace with function body.
 	
-=======
+
 # Beispiel ist in 3D. Welche Cam in 2D. Dazu noche exit game qenn input 'quit
 # und physics process when multiplayer authority ...
 # https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 #func _ready():
 #	cam.current = is_multiplayer_authority()
->>>>>>> Stashed changes
+
