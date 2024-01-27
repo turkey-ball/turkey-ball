@@ -6,6 +6,7 @@ signal goal_hit(side: String)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$background_sound1.play()
+	$background_sound2.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -25,27 +25,29 @@ script = ExtResource("1_4d3lw")
 
 [node name="ScoreL" type="Label" parent="."]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 19.0
-offset_right = 261.0
-offset_bottom = 103.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 222.0
+offset_bottom = 102.0
 text = "test"
 label_settings = SubResource("LabelSettings_ku1yl")
 
 [node name="ScoreR" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1206.0
+offset_left = 1375.0
 offset_top = 25.0
-offset_right = 1399.0
-offset_bottom = 109.0
+offset_right = 1581.0
+offset_bottom = 101.0
 text = "test"
 label_settings = SubResource("LabelSettings_fsqqb")
+horizontal_alignment = 2
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 634.0
-offset_top = 17.0
-offset_right = 818.0
+offset_left = 750.0
+offset_top = 25.0
+offset_right = 850.0
 offset_bottom = 99.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_ckqhh")
+horizontal_alignment = 1
