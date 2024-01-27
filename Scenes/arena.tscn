@@ -2,25 +2,24 @@
 
 [ext_resource type="Script" path="res://Scripts/arena.gd" id="1_6hnq8"]
 [ext_resource type="AudioStream" uid="uid://88efe6jy8qub" path="res://assets/sounds/background.wav" id="2_d8ia7"]
+[ext_resource type="Texture2D" uid="uid://cu5gcl81k06gm" path="res://assets/pics/Spielfeld2.png" id="2_h1eli"]
 [ext_resource type="AudioStream" uid="uid://jnwcsa8beexv" path="res://assets/sounds/background2.wav" id="3_v2gyn"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_8kl0h"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhgol"]
-size = Vector2(66.9948, 170.622)
+size = Vector2(56.6451, 257.681)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_6hnq8")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1153.0
-offset_bottom = 646.0
-texture = SubResource("CanvasTexture_8kl0h")
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 1000.0
+texture = ExtResource("2_h1eli")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(198, 297, 336, 159, 599, 72, 824, 92, 971, 177, 1018, 275, 990, 435, 847, 496, 608, 524, 336, 468, 196, 297, 1, 348, 0, 646, 1157, 646, 1153, 1, 3, 1, -1, 347)
+polygon = PackedVector2Array(190, 869, 325, 213, 356, 192, 386, 170, 1233, 170, 1294, 215, 1435, 870, 1390, 964, 660, 963, 251, 961, 187, 873, 1, 348, -2, 999, 1602, 1001, 1602, 2, 3, 1, -1, 347)
 
 [node name="background_sound1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_d8ia7")
@@ -33,14 +32,15 @@ stream = ExtResource("3_v2gyn")
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalL"]
-position = Vector2(243.523, 290.155)
+position = Vector2(290.848, 526.768)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qhgol")
 
 [node name="GoalR" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalR"]
-position = Vector2(1010.36, 315.026)
+position = Vector2(1398.96, 533.679)
 shape = SubResource("RectangleShape2D_qhgol")
 
 [connection signal="body_entered" from="GoalL" to="." method="_on_goal_l_body_entered"]
