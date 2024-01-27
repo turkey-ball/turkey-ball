@@ -30,3 +30,7 @@ func _physics_process(_delta):
 		$Arena/Player.velocity.y = 0
 
 	$Arena/Player.move_and_slide()
+
+
+func _on_arena_goal_hit(side):
+	pass # Replace with function body.

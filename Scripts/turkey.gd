@@ -43,8 +43,6 @@ func _process(_delta):
 		if (velocity < 0.5):
 			status = 0
 			idle_time = 0		
-			
-	
 	pass
 
 """
