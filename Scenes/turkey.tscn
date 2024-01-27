@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bd3r5eky344wd"]
+[gd_scene load_steps=46 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -294,10 +294,6 @@ stream = ExtResource("9_usjel")
 
 [node name="walk" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_p34m5")
-
-animation = &"explosion"
-frame = 5
-frame_progress = 0.237216
 
 [node name="Area2D" type="Area2D" parent="."]
 
