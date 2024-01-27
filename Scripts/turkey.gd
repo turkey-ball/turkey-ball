@@ -20,6 +20,7 @@ func _ready():
 	position.x = screen_size.x / 2
 	position.y = screen_size.y / 2
 	name = "Turkey"
+	$gubbelgubbel.play()
 	pass
 
 	
@@ -96,6 +97,7 @@ func _on_animation_animation_finished():
 		status = 0
 		linear_velocity = Vector2(0,0)
 		angular_velocity = 0.0
+		$gubbelgubbel.play()
 		
 
 func _on_player_kick_turkey(pos):	
