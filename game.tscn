@@ -19,7 +19,6 @@ scale = Vector2(0.48, 0.48)
 position = Vector2(800, 500)
 
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
-visible = false
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
 [connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]
