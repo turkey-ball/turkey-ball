@@ -16,6 +16,10 @@ var turkeyStartPosition = Vector2(800,500)
 # 3: get's kicked / flyes away
 
 func _ready():
+	var screen_size = get_viewport().size
+	position.x = screen_size.x / 2
+	position.y = screen_size.y / 2
+	name = "Turkey"
 	pass
 
 	

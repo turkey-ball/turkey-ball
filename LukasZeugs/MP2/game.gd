@@ -39,6 +39,8 @@ func _on_arena_goal_hit(side):
 ### Multiplayer Logik ###
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
+@export var turkey_scene : PackedScene
+@export var turkey_scene2 : PackedScene
 
 func _on_host_pressed():
 	peer.create_server(1337)
@@ -48,6 +50,10 @@ func _on_host_pressed():
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Arena/Turkey.queue_free()
+	var turkey = turkey_scene.instantiate()
+	turkey.name = "Turkey"
+	$Arena.call_deferred("add_child", turkey)
 	
 func _on_join_pressed():
 	peer.create_client("127.0.0.1", 1337)
@@ -55,6 +61,10 @@ func _on_join_pressed():
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Arena/Turkey.queue_free()
+	var turkey = turkey_scene2.instantiate()
+	turkey.name = "Turkey"
+	$Arena.call_deferred("add_child", turkey)
 
 func add_player(id = 1):
 	var player = player_scene.instantiate()
