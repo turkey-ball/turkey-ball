@@ -64,10 +64,13 @@ func _process(_delta):
 func explode():
 	$animation.play("explosion")
 
+# IT'S A FEATURE
+@export var haveChaosMode = false
 
 func _on_area_2d_body_entered(body:Node2D):
 	print(body)
-	if body.name == "Player"|| body.get_class() == "CharacterBody2D" :
+	if (body.name == "Player" || body.get_class() == "CharacterBody2D" ||
+			(typeof("CharacterBody2D") && haveChaosMode)):
 		linear_velocity = Vector2(0,0)
 		var new_direction = position - body.position
 		linear_velocity = new_direction

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://LukasZeugs/MP1/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://LukasZeugs/MP1/game.gd" id="1_hpn51"]
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://LukasZeugs/MP1/player.tscn" id="2_0ktil"]
-[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://Scenes/turkey.tscn" id="3_itfda"]
+[ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_hpn51")
