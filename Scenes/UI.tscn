@@ -5,14 +5,20 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ku1yl"]
 font_size = 50
 font_color = Color(1, 0.266667, 1, 1)
+shadow_size = 2
+shadow_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fsqqb"]
 font_size = 50
 font_color = Color(0.054902, 0.764706, 0.498039, 1)
+shadow_size = 2
+shadow_color = Color(1, 1, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ckqhh"]
 font_size = 50
 font_color = Color(0.933333, 0.658824, 0, 1)
+shadow_size = 2
+shadow_color = Color(1, 1, 1, 1)
 
 [node name="Ui" type="Control"]
 layout_mode = 3

@@ -36,7 +36,6 @@ scale = Vector2(0.965, 0.965)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalL"]
 position = Vector2(238.342, 524.352)
-scale = Vector2(1, 1)
 skew = 0.223402
 shape = SubResource("RectangleShape2D_qhgol")
 
