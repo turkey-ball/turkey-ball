@@ -1,4 +1,7 @@
 extends RigidBody2D
+
+const TURKEY_SPEED = 15
+
 var status = 0 
 var idle_time = 0
 var moving = true
@@ -74,7 +77,7 @@ func _on_area_2d_body_entered(body:Node2D):
 		linear_velocity = Vector2(0,0)
 		var new_direction = position - body.position
 		linear_velocity = new_direction
-		apply_impulse(new_direction * 3)
+		apply_impulse(new_direction * TURKEY_SPEED)
 		inertia = TURKEY_WEIGHT		
 		$scream1.play()	
 		status = 3
