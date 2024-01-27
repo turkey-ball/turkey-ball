@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4tmocoy7pa3w"]
+[gd_scene load_steps=6 format=3 uid="uid://bjojb4dx085sx"]
 
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://Scenes/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_sa265"]
+[ext_resource type="PackedScene" uid="uid://cpfxhrak2cyuc" path="res://Scenes/UI.tscn" id="2_3fona"]
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_so3og"]
 [ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 
@@ -11,10 +12,13 @@ script = ExtResource("1_sa265")
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
 [node name="Player" parent="Arena" instance=ExtResource("2_so3og")]
-position = Vector2(439, 239)
+position = Vector2(423, 233)
 scale = Vector2(0.48, 0.48)
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
-position = Vector2(610, 309)
+position = Vector2(800, 500)
 
-[connection signal="scare_turkey" from="Arena/Player" to="Arena/Turkey" method="_on_player_scare_turkey"]
+[node name="Ui" parent="." instance=ExtResource("2_3fona")]
+
+[connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
+[connection signal="tree_exited" from="Arena/Turkey" to="." method="_on_turkey_tree_exited"]
