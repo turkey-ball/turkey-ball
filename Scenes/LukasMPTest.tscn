@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4odllx4m0vdi"]
 
 [ext_resource type="Script" path="res://Scripts/LukasMPTest.gd" id="1_5btix"]
-[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://LukasZeugs/player.tscn" id="2_j3iee"]
+[ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_j3iee"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5btix")
@@ -24,7 +24,6 @@ offset_bottom = 149.0
 text = "Join Game"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]

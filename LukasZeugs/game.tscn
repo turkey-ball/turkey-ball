@@ -3,16 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://LukasZeugs/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://LukasZeugs/game.gd" id="1_hpn51"]
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://LukasZeugs/player.tscn" id="2_0ktil"]
-[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://turkey.tscn" id="3_itfda"]
+[ext_resource type="PackedScene" uid="uid://x233w78trjqi" path="res://Scenes/turkey.tscn" id="3_itfda"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("spawn_point_left", "spawn_point_right")]
 script = ExtResource("1_hpn51")
 player_scene = ExtResource("2_0ktil")
+spawn_point_left = NodePath("Arena/SpawnPoints/SP1")
+spawn_point_right = NodePath("Arena/SpawnPoints/SP2")
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
 [node name="Turkey" parent="Arena" instance=ExtResource("3_itfda")]
 position = Vector2(610, 309)
+
+[node name="SpawnPoints" type="Node2D" parent="Arena"]
+
+[node name="SP1" type="Node2D" parent="Arena/SpawnPoints"]
+position = Vector2(314, 339)
+
+[node name="SP2" type="Node2D" parent="Arena/SpawnPoints"]
+position = Vector2(998, 393)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
