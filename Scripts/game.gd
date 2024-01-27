@@ -7,13 +7,10 @@ var activeTurkey: RigidBody2D = null
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	activeTurkey = $Arena/Turkey
 
 func _physics_process(_delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_horizontal = Input.get_axis("ui_left", "ui_right")
 	var direction_vertical = Input.get_axis("ui_up", "ui_down")
 	if direction_horizontal:
