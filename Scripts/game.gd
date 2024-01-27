@@ -32,7 +32,7 @@ func _on_arena_goal_hit(side):
 		$Ui.score_l += 1
 	elif side == 'right':
 		$Ui.score_r += 1
-	$Arena/Turkey.explode()
+	
 
 ### Multiplayer Logik ###
 var peer = ENetMultiplayerPeer.new()
