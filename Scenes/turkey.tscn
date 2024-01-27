@@ -276,6 +276,8 @@ script = ExtResource("1_ltaqm")
 
 [node name="gubbelgubbel" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_pjqaj")
+volume_db = 10.0
+pitch_scale = 2.0
 
 [node name="wall_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3lpdk")
