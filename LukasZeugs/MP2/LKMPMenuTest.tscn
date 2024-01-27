@@ -7,34 +7,49 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wnsym")
 
 [node name="Host" type="Button" parent="."]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 85.0
-offset_right = 173.0
-offset_bottom = 116.0
+offset_left = 25.0
+offset_top = 80.0
+offset_right = 155.0
+offset_bottom = 112.0
 text = "Host Game"
 
 [node name="Join" type="Button" parent="."]
 layout_mode = 0
-offset_left = 236.0
-offset_top = 89.0
-offset_right = 323.0
-offset_bottom = 120.0
+offset_left = 25.0
+offset_top = 120.0
+offset_right = 155.0
+offset_bottom = 152.0
 text = "Join Game"
 
 [node name="SingleGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 142.0
-offset_right = 211.0
-offset_bottom = 173.0
-disabled = true
-text = "Start Single Game"
+offset_left = 25.0
+offset_top = 160.0
+offset_right = 155.0
+offset_bottom = 192.0
+text = "Single Game"
+
+[node name="ChaosMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ACTIVATE" type="CheckBox" parent="ChaosMenu"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 200.0
+offset_right = 155.0
+offset_bottom = 232.0
+text = "Chaos"
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
