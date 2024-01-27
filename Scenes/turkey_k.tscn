@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://brjbymwbrm5fv" path="res://assets/pics/spritesheets/wings.png" id="10_xxqga"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
-radius = 32.28
+radius = 32.0156
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
@@ -262,7 +262,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w26h"]
-radius = 41.3038
+radius = 34.0147
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jwpe2"]
 properties/0/path = NodePath(".:position")
