@@ -53,8 +53,8 @@ func _on_host_pressed():
 	turkey.name = "Turkey"
 	$Arena.call_deferred("add_child", turkey)
 	
-func _on_join_pressed():
-	peer.create_client("127.0.0.1", 1337)
+func _on_join_pressed(ip = "127.0.0.1"):
+	peer.create_client(ip, 1337)
 	multiplayer.multiplayer_peer = peer
 	$LkmpMenuTest.hide()
 	$Arena.show()
