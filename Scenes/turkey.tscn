@@ -264,7 +264,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w26h"]
-radius = 41.3038
+radius = 32.0624
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htlko"]
 radius = 42.0119
@@ -328,7 +328,7 @@ stream = ExtResource("10_p34m5")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 2)
-scale = Vector2(0.366667, 0.366667)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qr73g")
 animation = &"idle"
 
