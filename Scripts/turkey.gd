@@ -71,6 +71,7 @@ func _process(_delta):
 
 func explode():
 	$animation.play("explosion")
+	$scream2.play()
 
 # IT'S A FEATURE
 @export var haveChaosMode = false
