@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=13 format=3 uid="uid://dsilfbvb5t08r"]
 
 [ext_resource type="Script" path="res://LukasZeugs/player.gd" id="1_656ek"]
 [ext_resource type="Texture2D" uid="uid://y6qtumexj4dg" path="res://assets/pics/spritesheets/walk.png" id="2_jb575"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4sia2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_331ci"]
+size = Vector2(145, 235)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppqfu"]
 atlas = ExtResource("2_jb575")
@@ -72,9 +75,15 @@ position = Vector2(76, 118)
 scale = Vector2(144.5, 234.5)
 texture = SubResource("PlaceholderTexture2D_4sia2")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(76, 118)
+shape = SubResource("RectangleShape2D_331ci")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i26s0")
 frame_progress = 0.14176
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

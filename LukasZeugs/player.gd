@@ -44,19 +44,11 @@ func _physics_process(_delta):
 	var direction_vertical = Input.get_axis("ui_up", "ui_down")
 	if direction_horizontal:
 		velocity.x = direction_horizontal * SPEED
-		#print("Player " + name + " moved horizontally: " + str(position))
 	else:
 		velocity.x = 0
 	if direction_vertical:
 		velocity.y = direction_vertical * SPEED
-		#print("Player " + name + " moved vertically: " + str(position))
 	else:
 		velocity.y = 0
-	
-	if !direction_horizontal && !direction_vertical:
-		return
-
-	rpc("setPosition", position)
-	print("Player " + name + " position: " + str(position) + ", h: " + str(direction_horizontal) + 
-	", v: " + str(direction_vertical))
+		
 	move_and_slide()

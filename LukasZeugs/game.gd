@@ -28,8 +28,6 @@ func _process(delta):
 
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene : PackedScene
-@export var spawn_point_left : Node2D
-@export var spawn_point_right : Node2D
 
 func _on_host_pressed():
 	peer.create_server(1337)
@@ -41,7 +39,6 @@ func _on_host_pressed():
 func _on_join_pressed():
 	peer.create_client("127.0.0.1", 1337)
 	multiplayer.multiplayer_peer = peer
-	rpc_id(1, "set_player_position", spawn_point_right.position)
 	$CanvasLayer.hide()
 
 func add_player(id = 1):
@@ -55,12 +52,14 @@ func add_player(id = 1):
 	player.myplayerid = id
 	
 	# Wollte den Shape deaktivieren, hab das im Objekt gemacht, weils schneller geht.
+	'''
 	for shape_index in range(player.get_child_count()):
 		if player.get_child(shape_index) is CollisionShape2D:
 			print("deactivated:" + player.get_child(shape_index).name)
 			#player.get_child(shape_index).disabled = true
 			#player.get_child(shape_index).visible = false
 			player.get_child(shape_index).queue_free()
+	'''
 			
 	print("Player added: " + str(id))
 	print("=> Player position: " + str(player.position) + ", VP-Size: " + str(get_viewport().size))
