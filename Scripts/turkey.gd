@@ -2,6 +2,7 @@ extends RigidBody2D
 var status = 0 
 var idle_time = 0
 var velocity = 1
+const TURKEY_WEIGHT = 1
 # 0: idle
 # 1: move random
 # 2: moves from player
@@ -16,6 +17,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	"""
 	print(rotation_degrees)
 	if rotation_degrees > 1:
 		rotation_degrees -= _delta*5
@@ -23,6 +25,7 @@ func _process(_delta):
 		rotation_degrees += _delta*5
 	if rotation_degrees > -3 and rotation_degrees < 3:
 		status = 0
+	"""
 	if status == 0:
 		$animation.play("idle")
 		idle_time += 1
@@ -68,7 +71,9 @@ func _on_area_2d_body_entered(body:Node2D):
 	if body.name == "Player":
 		linear_velocity = Vector2(0,0)
 		var new_direction = position - body.position
-		apply_impulse(new_direction * 10)
+		apply_impulse(new_direction * 5)
+		inertia = TURKEY_WEIGHT
+		apply_torque(500)
 		$scream1.play()	
 		status = 3
 		
