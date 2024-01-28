@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=35 format=3 uid="uid://dsilfbvb5t08r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_3yj7q"]
 [ext_resource type="Texture2D" uid="uid://1jijl5y5y1rn" path="res://assets/pics/spritesheets/clown_kick.png" id="2_av50b"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
 size = Vector2(27, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8mxd"]
+atlas = ExtResource("2_av50b")
+region = Rect2(0, 0, 531, 536)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia2kn"]
 atlas = ExtResource("2_av50b")
@@ -90,12 +94,20 @@ region = Rect2(5310, 0, 531, 577)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_e8mxd")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ia2kn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4iulp")
 }],
-"loop": true,
+"loop": false,
 "name": &"kick",
 "speed": 5.0
 }, {
@@ -222,7 +234,7 @@ shape = SubResource("RectangleShape2D_0086a")
 position = Vector2(0, 2)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
-animation = &"kick"
+animation = &"idle"
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
