@@ -1,65 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://cijrxo2qxahpu"]
+[gd_scene load_steps=4 format=3 uid="uid://cijrxo2qxahpu"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_wnsym"]
+[ext_resource type="Texture2D" uid="uid://b22opf3hvwikg" path="res://assets/pics/clowns_kicking_turkey.png" id="2_8eayj"]
+[ext_resource type="Texture2D" uid="uid://b7ndwsnt8v3su" path="res://assets/pics/clown_horde.png" id="2_tx6p2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 50.0
-offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wnsym")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 1000.0
+texture = ExtResource("2_tx6p2")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 1300.0
+offset_bottom = 1000.0
+texture = ExtResource("2_8eayj")
+expand_mode = 1
+
 [node name="Host" type="Button" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 80.0
-offset_right = 155.0
-offset_bottom = 112.0
+offset_left = 80.0
+offset_top = 90.0
+offset_right = 230.0
+offset_bottom = 122.0
 text = "Host Game"
+
+[node name="IpOverrideField" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 130.0
+offset_right = 230.0
+offset_bottom = 162.0
+text = "127.0.0.1"
+placeholder_text = "192.168.42.42"
+alignment = 1
 
 [node name="Join" type="Button" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 120.0
-offset_right = 155.0
-offset_bottom = 152.0
+offset_left = 80.0
+offset_top = 170.0
+offset_right = 230.0
+offset_bottom = 202.0
 text = "Join Game"
 
 [node name="SingleGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 160.0
-offset_right = 155.0
-offset_bottom = 192.0
+offset_left = 80.0
+offset_top = 210.0
+offset_right = 230.0
+offset_bottom = 242.0
 text = "Single Game"
 
-[node name="ChaosMenu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ACTIVATE" type="CheckBox" parent="ChaosMenu"]
+[node name="ChaosMode" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 200.0
-offset_right = 155.0
-offset_bottom = 232.0
-text = "Chaos"
+offset_left = 80.0
+offset_top = 250.0
+offset_right = 230.0
+offset_bottom = 282.0
+text = "Chaos Mode"
 
-[node name="IpOverrideField" type="TextEdit" parent="."]
+[node name="Exit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 115.0
-offset_right = 307.0
-offset_bottom = 155.0
-text = "127.0.0.1"
+offset_left = 80.0
+offset_top = 870.0
+offset_right = 230.0
+offset_bottom = 902.0
+text = "Exit"
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="SingleGame" to="." method="_on_single_game_pressed"]
-[connection signal="pressed" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_pressed"]
+[connection signal="toggled" from="ChaosMode" to="." method="_on_chaos_mode_toggled"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
