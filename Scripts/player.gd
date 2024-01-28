@@ -17,13 +17,13 @@ func _enter_tree():
 
 func _on_animation_animation_finished():
 	if $animation.animation == "kick":
-		$animation.pause()
+		$animation.play("idle")
+	
 
 
 func _process(_delta):
 	
 	if $animation.animation == "kick" :
-		print($animation.animation)
 		return
 	if velocity[0] > 0 :
 		$animation.flip_h = false 
@@ -32,8 +32,8 @@ func _process(_delta):
 	
 	if abs(velocity[0]) > 0.1 || abs(velocity[1]) > 0.1 :
 		$animation.play("walk")
-	else :
-		$animation.pause()
+	else:
+		$animation.play("idle")
 
 ### Multiplayer ###
 @export var myplayerid:int
