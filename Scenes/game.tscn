@@ -14,7 +14,6 @@ player_scene = ExtResource("2_so3og")
 turkey_scene = ExtResource("3_itfda")
 turkey_scene2 = ExtResource("4_q7i6o")
 spawn_collectibles = true
-collectibles = Array[PackedScene]([ExtResource("4_q7i6o")])
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
