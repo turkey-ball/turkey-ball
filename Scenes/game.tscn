@@ -33,7 +33,7 @@ position = Vector2(1313, 503)
 
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
 
-[node name="LkmpMenuTest" parent="." instance=ExtResource("5_lty0h")]
+[node name="Menu" parent="." instance=ExtResource("5_lty0h")]
 offset_left = 1.0
 offset_top = 2.0
 offset_right = 1.0
@@ -43,23 +43,7 @@ offset_bottom = 2.0
 _spawnable_scenes = PackedStringArray("res://Scenes/player.tscn", "res://Scenes/turkey.tscn")
 spawn_path = NodePath("..")
 
-[node name="ChaosMenu" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 41.0
-offset_bottom = 42.0
-
-[node name="ACTIVATE" type="CheckBox" parent="ChaosMenu"]
-layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
-text = "Chaos"
-
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
-[connection signal="toggled" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_toggled"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

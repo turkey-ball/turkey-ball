@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	$Arena.hide()
 	$Ui.hide()
-	$LkmpMenuTest.show()
+	$Menu.show()
 	$Timer.start()
 
 func _on_arena_goal_hit(side):
@@ -30,7 +30,7 @@ func _on_host_pressed():
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	add_player()
-	$LkmpMenuTest.hide()
+	$Menu.hide()
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "H"
@@ -44,7 +44,7 @@ func _on_join_pressed(ip = "127.0.0.1"):
 	peer.create_client(ip, 1337)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.server_disconnected.connect(_back_to_menu)
-	$LkmpMenuTest.hide()
+	$Menu.hide()
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "C"
@@ -84,7 +84,7 @@ func _on_activate_toggled(toggled_on):
 
 ### Singleplayer ###
 func _on_single_game_pressed():
-	$LkmpMenuTest.hide()
+	$Menu.hide()
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "S"
@@ -108,7 +108,7 @@ func _back_to_menu():
 		if child.get_class() == "RigidBody2D" || child.get_class() == "CharacterBody2D":
 			child.queue_free()
 	
-	$LkmpMenuTest.show()
+	$Menu.show()
 	$Arena.hide()
 	$Ui.hide()
 
@@ -118,7 +118,7 @@ func _process(_delta):
 			peer.close()
 			_back_to_menu()
 		# Beim Menü das Spiel beenden!
-		elif $LkmpMenuTest.visible:
+		elif $Menu.visible:
 			get_tree().quit(0)
 	pass
 
