@@ -54,6 +54,7 @@ func _process(_delta):
 				# Power Up zum Verändern der Größe
 				collider_object.scale.x = randi_range(1,2)
 				collider_object.scale.y = randi_range(1,2)
+		
 		# Damit die Bullet nicht das PowerUp "aufsammelt"
 		if (collider_object.name != null &&
 				!collider_object.name.contains("Bullet") &&

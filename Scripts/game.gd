@@ -33,6 +33,8 @@ func _on_host_pressed():
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "H"
+	$Ui/ScoreL.show()
+	$Ui/ScoreR.show()
 	if $Arena/Turkey != null:
 		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
@@ -47,6 +49,8 @@ func _on_join_pressed(ip = "127.0.0.1"):
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "C"
+	$Ui/ScoreL.show()
+	$Ui/ScoreR.show()
 	if $Arena/Turkey != null:
 		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene2.instantiate()
