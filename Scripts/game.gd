@@ -83,5 +83,6 @@ func _on_single_game_pressed():
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
 	add_player()
