@@ -14,7 +14,6 @@ grow_vertical = 2
 script = ExtResource("1_wnsym")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1600.0
 offset_bottom = 1000.0
