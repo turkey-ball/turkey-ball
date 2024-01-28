@@ -55,7 +55,6 @@ func _process(_delta):
 			$animation.play("explosion")
 
 func goal():
-	#$scream2.play()
 	$explosion2.play()
 	$explosion1.play()
 	status = 4
