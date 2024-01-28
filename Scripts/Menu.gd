@@ -26,5 +26,5 @@ func _on_chaos_mode_toggled(toggled_on):
 
 
 func _on_exit_pressed():
-	pass
+	get_tree().quit()
 
