@@ -109,7 +109,6 @@ func _back_to_menu():
 	$LkmpMenuTest.show()
 	$Arena.hide()
 	$Ui.hide()
-	pass
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
