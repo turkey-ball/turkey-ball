@@ -73,7 +73,15 @@ func _set_position():
 	position.y = randY
 
 func _on_timer_timeout():
-	collider_object.scale.x = 1
-	collider_object.scale.y = 1
+	# Damit das Zurücksetzen nicht in das Beenden der Anwendung läuft
+	if collider_object != null:
+		collider_object.scale.x = 1
+		collider_object.scale.y = 1
+	
+		# Zurücksetzen der Power-Up Felder
+		if int(str(collider_object.name)) == 1:
+			get_node("/root/Game/Ui/PowerUpDisplayRectP1").set_texture(null)
+		else:
+			get_node("/root/Game/Ui/PowerUpDisplayRectP2").set_texture(null)
+	
 	queue_free()
-	get_node("/root/Game/Ui/PowerUpDisplayRectP1").set_texture(null)
