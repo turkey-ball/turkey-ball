@@ -89,6 +89,7 @@ func _on_single_game_pressed():
 	$Ui.show()
 	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
+	# $Ui/ColorRect.hide()
 	if $Arena/Turkey != null:
 		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
