@@ -1,12 +1,12 @@
 [gd_scene load_steps=51 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
-[ext_resource type="Texture2D" uid="uid://cas6mgf6wwicn" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
-[ext_resource type="Texture2D" uid="uid://y6qtumexj4dg" path="res://assets/pics/spritesheets/walk.png" id="2_2lr2m"]
-[ext_resource type="Texture2D" uid="uid://dg0g1l78r3mmn" path="res://assets/pics/spritesheets/explo.png" id="2_hyh7e"]
+[ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
+[ext_resource type="Texture2D" uid="uid://bnjaj7ohtjina" path="res://assets/pics/spritesheets/walk.png" id="2_2lr2m"]
+[ext_resource type="Texture2D" uid="uid://b4bg7c1crlg5p" path="res://assets/pics/spritesheets/explo.png" id="2_hyh7e"]
 [ext_resource type="AudioStream" uid="uid://bv28rsdvwqrru" path="res://assets/sounds/gubbel_gubbel.wav" id="2_pjqaj"]
-[ext_resource type="Texture2D" uid="uid://blirgkbic7ewr" path="res://assets/pics/spritesheets/roll.png" id="2_u7ta1"]
-[ext_resource type="Texture2D" uid="uid://dap4bohx40tya" path="res://assets/pics/spritesheets/wings.png" id="3_co2ll"]
+[ext_resource type="Texture2D" uid="uid://ct3xvbbhajjt2" path="res://assets/pics/spritesheets/roll.png" id="2_u7ta1"]
+[ext_resource type="Texture2D" uid="uid://brjbymwbrm5fv" path="res://assets/pics/spritesheets/wings.png" id="3_co2ll"]
 [ext_resource type="AudioStream" uid="uid://boc62wcemc4or" path="res://assets/sounds/turkey_woohoo.wav" id="7_66ddh"]
 [ext_resource type="AudioStream" uid="uid://bfqo0yi2mwrq" path="res://assets/sounds/turkey_scream2.wav" id="8_a6x2s"]
 [ext_resource type="AudioStream" uid="uid://c3gjcuypo7rr3" path="res://assets/sounds/turkey_scream1.wav" id="9_usjel"]
@@ -302,6 +302,9 @@ properties/8/replication_mode = 1
 properties/9/path = NodePath("animation:frame")
 properties/9/spawn = true
 properties/9/replication_mode = 1
+properties/10/path = NodePath("animation:flip_h")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [node name="Turkey" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_4ugma")
