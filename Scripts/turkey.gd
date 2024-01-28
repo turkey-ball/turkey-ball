@@ -67,9 +67,9 @@ func goal():
 func _on_area_2d_body_entered(body:Node2D):
 	if body.name == "Player" \
 	|| body.get_class() == "CharacterBody2D" \
-	|| (typeof("CharacterBody2D") && haveChaosMode):
-		var new_direction = position - body.position
-		linear_velocity = new_direction
+	|| (typeof("CharacterBody2D") && haveChaosMode):		
+		var new_direction = (position - body.position)/3
+		linear_velocity = body.velocity / 1.2
 		inertia = TURKEY_WEIGHT
 		apply_impulse(new_direction * TURKEY_SPEED)
 		$scream1.play()
