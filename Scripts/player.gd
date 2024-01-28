@@ -92,8 +92,7 @@ func shoot():
 	b.rotation_degrees = $watergun.rotation_degrees
 	b.player_name = self.name
 	get_tree().root.add_child(b)
-	if velocity == Vector2(0,0) and $animation.flip_h:		
-		#b.direction = Vector2(-1,0)
+	if velocity == Vector2(0,0) and $animation.flip_h:
 		b.global_position[0] = b.global_position[0] - 40
 	#elif velocity == Vector2(0,0) and !$animation.flip_h:
 		#b.direction = Vector2(1,0)

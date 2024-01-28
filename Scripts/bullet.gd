@@ -8,16 +8,12 @@ func _ready():
 	print("player name:",player_name)
 	print("name:",name)
 	
-	#look_at(get_viewport().get_mouse_position())
-	#direction = Vector2(1,0) *rotation
 func _physics_process(delta):		
-
 	velocity = SPEED * direction
-
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body.name != "Bullet" and body.name != player_name:
+	if !body.get("player_name") and body.name != player_name:
 		$splash.play()
 		print(body.name)
 		velocity = Vector2(0,0)
