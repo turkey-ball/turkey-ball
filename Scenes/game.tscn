@@ -44,7 +44,7 @@ offset_right = 1.0
 offset_bottom = 2.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/player.tscn", "res://Scenes/turkey.tscn")
+_spawnable_scenes = PackedStringArray("res://Scenes/player.tscn", "res://Scenes/turkey.tscn", "res://Collectibles/PowerUp.tscn")
 spawn_path = NodePath("..")
 
 [node name="Timer" type="Timer" parent="."]
