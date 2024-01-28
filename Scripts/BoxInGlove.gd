@@ -10,5 +10,14 @@ func _process(_delta):
 
 
 func _on_button_pressed():
+	pass
+
+
+func _on_glove_trigger_body_entered(body):
+	if !$InitialCage:
+		return
+	if !body.name.to_int():
+		return
+
 	$InitialCage.queue_free()
 	$Glove.apply_impulse(Vector2(0, -1000))
