@@ -21,7 +21,6 @@ func _ready():
 	name = "Turkey"
 	$gubbelgubbel.play()
 	status = 0
-	rotation = 0
 	idle_time = 0
 	linear_velocity = Vector2(0,0)
 	$animation.play("idle")
