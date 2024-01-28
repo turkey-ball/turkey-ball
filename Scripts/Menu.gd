@@ -20,8 +20,7 @@ func _on_single_game_pressed():
 
 
 func _on_chaos_mode_toggled(toggled_on):
-	if toggled_on == true:
-		$"../"._on_activate_toggled()
+	$"../"._on_activate_toggled(toggled_on)
 	# $"../"._on_activate_pressed()
 
 
