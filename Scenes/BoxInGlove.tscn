@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn5lgltdwtpid"]
+
+[ext_resource type="Script" path="res://Scripts/BoxInGlove.gd" id="1_dirpb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3553t"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b5s0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju63d"]
+size = Vector2(46, 52)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hvqvp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pebp7"]
+radius = 14.1421
+
+[node name="BoxInGlove" type="Node2D"]
+position = Vector2(260, 319)
+script = ExtResource("1_dirpb")
+
+[node name="Spring" type="Line2D" parent="."]
+points = PackedVector2Array(101.33, 2.70399, 118.417, 1.20015)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spring"]
+texture = SubResource("PlaceholderTexture2D_3553t")
+
+[node name="Box" type="StaticBody2D" parent="."]
+position = Vector2(27, -7.99999)
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+scale = Vector2(45.5, 51.5)
+texture = SubResource("PlaceholderTexture2D_b5s0y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(-1, -7.62939e-06)
+shape = SubResource("RectangleShape2D_ju63d")
+
+[node name="Glove" type="RigidBody2D" parent="."]
+position = Vector2(25, -23)
+
+[node name="Sprite2D" type="Sprite2D" parent="Glove"]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(17.25, 20.5)
+texture = SubResource("PlaceholderTexture2D_hvqvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Glove"]
+shape = SubResource("CircleShape2D_pebp7")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(26, -8)
+rotation = 3.10748
+node_a = NodePath("../Box")
+node_b = NodePath("../Glove")
+length = 10.0
+rest_length = 50.0
+stiffness = 19.4
+damping = 0.09
