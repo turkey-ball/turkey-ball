@@ -110,7 +110,7 @@ func _back_to_menu():
 	$Arena.hide()
 	$Ui.hide()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if $Arena.visible:
 			peer.close()
