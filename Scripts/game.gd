@@ -133,7 +133,7 @@ func _on_timer_timeout():
 	if collectibles.size() == 0 || !spawn_collectibles:
 		# Fehler ausgeben und Timer neu setzen
 		print("GAME collectibles empty or can not spawn collectibles")
-		$Timer.Start()
+		$Timer.start()
 		return
 	
 	if max_items != null && $Arena/Collectibles.get_child_count() >= max_items:
