@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn5lgltdwtpid"]
+[gd_scene load_steps=9 format=3 uid="uid://cn5lgltdwtpid"]
 
 [ext_resource type="Script" path="res://Scripts/BoxInGlove.gd" id="1_dirpb"]
 
@@ -13,6 +13,13 @@ size = Vector2(46, 52)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pebp7"]
 radius = 14.1421
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kmrlj"]
+a = Vector2(0, -34)
+b = Vector2(0, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqjeu"]
+radius = 10.8365
 
 [node name="BoxInGlove" type="Node2D"]
 position = Vector2(260, 319)
@@ -36,7 +43,7 @@ position = Vector2(-1, -7.62939e-06)
 shape = SubResource("RectangleShape2D_ju63d")
 
 [node name="Glove" type="RigidBody2D" parent="."]
-position = Vector2(25, -23)
+position = Vector2(25, -16)
 
 [node name="Sprite2D" type="Sprite2D" parent="Glove"]
 position = Vector2(0, -3.8147e-06)
@@ -47,7 +54,7 @@ texture = SubResource("PlaceholderTexture2D_hvqvp")
 shape = SubResource("CircleShape2D_pebp7")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2(26, -8)
+position = Vector2(25, -6)
 rotation = 3.10748
 node_a = NodePath("../Box")
 node_b = NodePath("../Glove")
@@ -55,3 +62,48 @@ length = 10.0
 rest_length = 50.0
 stiffness = 19.4
 damping = 0.09
+
+[node name="Button" type="Button" parent="."]
+offset_left = -243.0
+offset_top = -240.0
+offset_right = -147.0
+offset_bottom = -209.0
+scale = Vector2(1.16886, 1.9013)
+text = "Drück mich"
+
+[node name="InitialCage" type="Node2D" parent="."]
+
+[node name="CageL" type="StaticBody2D" parent="InitialCage"]
+position = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InitialCage/CageL"]
+shape = SubResource("SegmentShape2D_kmrlj")
+
+[node name="CageR" type="StaticBody2D" parent="InitialCage"]
+position = Vector2(48, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InitialCage/CageR"]
+shape = SubResource("SegmentShape2D_kmrlj")
+
+[node name="CageU" type="StaticBody2D" parent="InitialCage"]
+position = Vector2(37, -32)
+rotation = -1.56932
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InitialCage/CageU"]
+shape = SubResource("SegmentShape2D_kmrlj")
+
+[node name="CageD" type="StaticBody2D" parent="InitialCage"]
+position = Vector2(37, 17)
+rotation = -1.56932
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InitialCage/CageD"]
+shape = SubResource("SegmentShape2D_kmrlj")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(26, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(4.11968, 4.11968)
+shape = SubResource("CircleShape2D_dqjeu")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
