@@ -21,3 +21,8 @@ func _on_glove_trigger_body_entered(body):
 
 	$InitialCage.queue_free()
 	$Glove.apply_impulse(body.position * 60)
+	$Timer.start()
+
+
+func _on_timer_timeout():
+	queue_free()

@@ -97,4 +97,8 @@ shape = SubResource("SegmentShape2D_kmrlj")
 scale = Vector2(4.11968, 4.11968)
 shape = SubResource("CircleShape2D_dqjeu")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="GloveTrigger" to="." method="_on_glove_trigger_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
