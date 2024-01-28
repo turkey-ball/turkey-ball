@@ -20,4 +20,4 @@ func _on_glove_trigger_body_entered(body):
 		return
 
 	$InitialCage.queue_free()
-	$Glove.apply_impulse(Vector2(0, -1000))
+	$Glove.apply_impulse(body.position * 60)
