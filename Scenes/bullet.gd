@@ -5,7 +5,8 @@ var player_name
 
 func _ready():
 	direction = (Vector2(1,0).rotated(rotation_degrees/180* PI))#.normalized()
-	print(player_name)
+	print("player name:",player_name)
+	print("name:",name)
 	
 	#look_at(get_viewport().get_mouse_position())
 	#direction = Vector2(1,0) *rotation
