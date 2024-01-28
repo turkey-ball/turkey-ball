@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bd3r5eky344wd"]
+[gd_scene load_steps=51 format=3 uid="uid://bd3r5eky344wd"]
 
 [ext_resource type="Script" path="res://Scripts/turkey.gd" id="1_ltaqm"]
 [ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="1_vb6q4"]
@@ -14,10 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://c5bb51mi2kuej" path="res://assets/sounds/explosion1.wav" id="12_rlo1y"]
 [ext_resource type="AudioStream" uid="uid://bf1oyd343d8fl" path="res://assets/sounds/explosion3.wav" id="13_4kf4d"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ugma"]
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 31.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivoob"]
 atlas = ExtResource("2_hyh7e")
@@ -170,7 +171,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nhwv6")
 }],
-"loop": true,
+"loop": false,
 "name": &"explosion",
 "speed": 10.0
 }, {
@@ -267,20 +268,53 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w26h"]
 radius = 32.0624
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xuw08"]
-radius = 41.4367
+[sub_resource type="CircleShape2D" id="CircleShape2D_htlko"]
+radius = 42.0119
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dtid3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:haveChaosMode")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:inertia")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:sleeping")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:linear_damp")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:angular_velocity")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("animation:animation")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("animation:frame")
+properties/9/spawn = true
+properties/9/replication_mode = 1
 
 [node name="Turkey" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_4ugma")
+gravity_scale = 0.0
 script = ExtResource("1_ltaqm")
+
+[node name="gubbelgubbel" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pjqaj")
+volume_db = 15.0
+pitch_scale = 1.5
 
 [node name="wall_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3lpdk")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1.5, 0.499999)
-scale = Vector2(39, 39)
-texture = SubResource("PlaceholderTexture2D_73ost")
 
 [node name="whoohoo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_66ddh")
@@ -298,7 +332,7 @@ stream = ExtResource("10_p34m5")
 position = Vector2(-2, 2)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qr73g")
-animation = &"explosion"
+animation = &"idle"
 
 [node name="player_interaction_area" type="Area2D" parent="."]
 
@@ -307,10 +341,12 @@ shape = SubResource("CircleShape2D_4w26h")
 
 [node name="player_scare_area" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 16
 
 [node name="player_scare_collision" type="CollisionShape2D" parent="player_scare_area"]
-shape = SubResource("CircleShape2D_xuw08")
+shape = SubResource("CircleShape2D_htlko")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dtid3")
 
 [node name="explosion1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_rlo1y")
@@ -321,5 +357,5 @@ stream = ExtResource("13_4kf4d")
 volume_db = 5.714
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
-[connection signal="child_entered_tree" from="player_interaction_area/player_interaction_collision" to="." method="_on_player_interaction_collision_child_entered_tree"]
+[connection signal="body_entered" from="player_interaction_area" to="." method="_on_area_2d_body_entered"]
 [connection signal="child_entered_tree" from="player_scare_area/player_scare_collision" to="." method="_on_player_scare_collision_child_entered_tree"]
