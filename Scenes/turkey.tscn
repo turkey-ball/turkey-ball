@@ -302,9 +302,6 @@ properties/8/replication_mode = 1
 properties/9/path = NodePath("animation:frame")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath("animation:flip_h")
-properties/10/spawn = true
-properties/10/replication_mode = 1
 
 [node name="Turkey" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_4ugma")
