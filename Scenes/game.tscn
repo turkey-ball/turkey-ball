@@ -13,6 +13,8 @@ script = ExtResource("1_sa265")
 player_scene = ExtResource("2_so3og")
 turkey_scene = ExtResource("3_itfda")
 turkey_scene2 = ExtResource("4_q7i6o")
+spawn_collectibles = true
+collectibles = Array[PackedScene]([ExtResource("4_q7i6o")])
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
@@ -26,6 +28,8 @@ position = Vector2(349, 503)
 
 [node name="SP2" type="Node2D" parent="Arena/SpawnPoints"]
 position = Vector2(1313, 503)
+
+[node name="Collectibles" type="Node2D" parent="Arena"]
 
 [node name="Ui" parent="." instance=ExtResource("2_3fona")]
 
@@ -54,5 +58,8 @@ offset_right = 24.0
 offset_bottom = 24.0
 text = "Chaos"
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="goal_hit" from="Arena" to="." method="_on_arena_goal_hit"]
 [connection signal="toggled" from="ChaosMenu/ACTIVATE" to="." method="_on_activate_toggled"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

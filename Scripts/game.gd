@@ -10,7 +10,7 @@ func _ready():
 	$Arena.hide()
 	$Ui.hide()
 	$LkmpMenuTest.show()
-
+	$Timer.start()
 
 func _on_arena_goal_hit(side):
 	if side == 'left':
@@ -34,7 +34,8 @@ func _on_host_pressed():
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "H"
-	$Arena/Turkey.queue_free()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
 	turkey.name = "Turkey"
 	$Arena.call_deferred("add_child", turkey)
@@ -42,11 +43,13 @@ func _on_host_pressed():
 func _on_join_pressed(ip = "127.0.0.1"):
 	peer.create_client(ip, 1337)
 	multiplayer.multiplayer_peer = peer
+	multiplayer.server_disconnected.connect(_back_to_menu)
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "C"
-	$Arena/Turkey.queue_free()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene2.instantiate()
 	turkey.name = "Turkey"
 	$Arena.call_deferred("add_child", turkey)
@@ -71,10 +74,11 @@ func _del_player(id):
 	get_node(str(id)).queue_free()
 
 func _on_activate_toggled(toggled_on):
-	print("toggle:" + str(toggled_on))
-	
-	var tk = $Arena/Turkey
-	tk.haveChaosMode = toggled_on
+	print("GAME chaos toggle:" + str(toggled_on))
+	if $Arena/Turkey != null:
+		print("GAME turkey toggled")
+		var tk = $Arena/Turkey
+		tk.haveChaosMode = toggled_on
 	pass # Replace with function body.
 
 
@@ -83,5 +87,68 @@ func _on_single_game_pressed():
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
+	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
+	var turkey = turkey_scene.instantiate()
+	turkey.name = "Turkey"
+	$Arena.call_deferred("add_child", turkey)
 	add_player()
+
+func _back_to_menu():
+	# Player aus dem Spiel entfernen
+	for child in get_children():
+		if child.get_class() == "CharacterBody2D":
+			exit_game(int(str(child.name)))
+			child.queue_free()
+	
+	# Turkey aus der Arena entfernen
+	for child in $Arena.get_children():
+		if child.get_class() == "RigidBody2D" || child.get_class() == "CharacterBody2D":
+			child.queue_free()
+	
+	$LkmpMenuTest.show()
+	$Arena.hide()
+	$Ui.hide()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if $Arena.visible:
+			peer.close()
+			_back_to_menu()
+		# Beim Menü das Spiel beenden!
+		elif $LkmpMenuTest.visible:
+			get_tree().quit(0)
+	pass
+
+### Collectible logic ###
+@export var spawn_collectibles : bool
+@export var collectibles : Array[PackedScene]
+@export var max_items : int = 10
+@export_range(0, 2) var random_timer_min : int = 0
+@export_range(8, 30) var random_timer_max : int = 10
+func _on_timer_timeout():
+	if collectibles.size() == 0 || !spawn_collectibles:
+		# Fehler ausgeben und Timer neu setzen
+		print("GAME collectibles empty or can not spawn collectibles")
+		$Timer.Start()
+		return
+	
+	if max_items != null && $Arena/Collectibles.get_child_count() >= max_items:
+		print("GAME max items ("+str(max_items)+") spawned. Collect or destroy existing items.")
+		return
+	
+	# Random platzieren von items...
+	if collectibles.size() > 0 && spawn_collectibles:
+		var _sel_item = collectibles[randi_range(0, collectibles.size() - 1)]
+		if _sel_item != null:
+			var item = _sel_item.instantiate()
+			item.name = "Collectible"
+			$Arena/Collectibles.call_deferred("add_child", item)
+			print("GAME collectible '"+str(item.name)+"' spawned")
+		else:
+			print("GAME collectible was empty and could not be spawned")
+		$Timer.wait_time = randi_range(random_timer_min, random_timer_max)
+		print("GAME timer reset with: " + str($Timer.wait_time))
+		$Timer.start() # reset?
