@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjd73shygkt87"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_ms6eq"]
+[ext_resource type="Texture2D" uid="uid://bdi3gm21k5tlw" path="res://assets/pics/drop.png" id="2_u6qbt"]
+[ext_resource type="AudioStream" uid="uid://cydmbter557qr" path="res://assets/sounds/splash.wav" id="3_ys8g1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk0o1"]
+atlas = ExtResource("2_u6qbt")
+region = Rect2(0, 0, 404, 670)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_how8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk0o1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qf5h"]
+size = Vector2(33, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks10f"]
+size = Vector2(57.25, 25)
+
+[node name="Bullet" type="CharacterBody2D"]
+position = Vector2(3, 1)
+collision_mask = 0
+script = ExtResource("1_ms6eq")
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(25, 1)
+rotation = -1.5755
+scale = Vector2(0.0613013, 0.0703125)
+sprite_frames = SubResource("SpriteFrames_how8k")
+
+[node name="splash" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(76.0001, -3)
+stream = ExtResource("3_ys8g1")
+volume_db = 24.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26, 1)
+shape = SubResource("RectangleShape2D_3qf5h")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(75.0001, -4)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-48.6251, 6.5)
+shape = SubResource("RectangleShape2D_ks10f")
+
+[connection signal="finished" from="splash" to="." method="_on_splash_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="child_entered_tree" from="Area2D/CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]

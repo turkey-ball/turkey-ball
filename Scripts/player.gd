@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+
+@export var bullet : PackedScene
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -77,10 +79,33 @@ func goal():
 	$animation.play("laugh")
 	$hohoho.play()
 	
-
+func shoot():
+	if !is_multiplayer_authority():
+		return
+	var b = preload("res://Scenes/bullet.tscn").instantiate()
+	add_child(b)
+	b.global_position = $watergun.global_position
+	b.direction = velocity.normalized()
+	if velocity == Vector2(0,0) and $animation.flip_h:		
+		b.direction = Vector2(-1,0)
+		b.global_position[0] = b.global_position[0] - 40
+	elif velocity == Vector2(0,0) and !$animation.flip_h:
+		b.direction = Vector2(1,0)
+	
+	
+	
+	
+func _input(ev):
+	if Input.is_key_pressed(KEY_SPACE):
+		shoot()
+		$watergun.play("default")
 # Beispiel ist in 3D. Welche Cam in 2D. Dazu noche exit game qenn input 'quit
 # und physics process when multiplayer authority ...
 # https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 #func _ready():
 #	cam.current = is_multiplayer_authority()
 
+
+
+func _on_watergun_animation_finished():
+	$watergun.pause("default")

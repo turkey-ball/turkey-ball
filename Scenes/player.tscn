@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=34 format=3 uid="uid://dsilfbvb5t08r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_3yj7q"]
 [ext_resource type="Texture2D" uid="uid://1jijl5y5y1rn" path="res://assets/pics/spritesheets/clown_kick.png" id="2_av50b"]
 [ext_resource type="Texture2D" uid="uid://d3hyan3c7mhdt" path="res://assets/pics/spritesheets/clown_laugh.png" id="3_p4gks"]
 [ext_resource type="Texture2D" uid="uid://8usa6jwskw7k" path="res://assets/pics/spritesheets/clown_walk.png" id="4_n1act"]
 [ext_resource type="AudioStream" uid="uid://cttnuusu1sw2i" path="res://assets/sounds/clown_laugh_hohoho.wav" id="5_0r8cb"]
+[ext_resource type="Texture2D" uid="uid://bwwtufo5yhwys" path="res://assets/pics/spritesheets/flower.png" id="6_bj1kw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
 size = Vector2(27, 51)
@@ -160,9 +161,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oqyve"]
-radius = 83.0542
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -176,13 +174,39 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("animation:frame")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath("animation:flip_h")
-properties/4/spawn = true
-properties/4/replication_mode = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4cv8"]
 radius = 13.1255
 height = 85.7538
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk8q8"]
+atlas = ExtResource("6_bj1kw")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2mk3"]
+atlas = ExtResource("6_bj1kw")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u5oh"]
+atlas = ExtResource("6_bj1kw")
+region = Rect2(0, 2048, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tflhs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk8q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2mk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u5oh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3yj7q")
@@ -200,14 +224,6 @@ frame = 1
 frame_progress = 0.825883
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="surrounding" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 1)
-shape = SubResource("CircleShape2D_oqyve")
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
@@ -222,8 +238,14 @@ shape = SubResource("CapsuleShape2D_u4cv8")
 [node name="hohoho" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0r8cb")
 
+[node name="watergun" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, -3)
+scale = Vector2(0.0234375, 0.0273438)
+sprite_frames = SubResource("SpriteFrames_tflhs")
+frame_progress = 0.626365
+
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="animation_looped" from="animation" to="." method="_on_animation_animation_looped"]
-[connection signal="child_entered_tree" from="Area2D/surrounding" to="." method="_on_surrounding_child_entered_tree"]
 [connection signal="body_entered" from="feet_area" to="." method="_on_feet_area_body_entered"]
 [connection signal="child_entered_tree" from="feet_area/feet" to="." method="_on_feet_child_entered_tree"]
+[connection signal="animation_finished" from="watergun" to="." method="_on_watergun_animation_finished"]

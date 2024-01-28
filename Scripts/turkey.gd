@@ -78,6 +78,3 @@ func _on_animation_animation_finished():
 	if $animation.animation == "explosion":
 		_ready()
 
-func _on_player_scare_collision_child_entered_tree(_node):
-	print("scared")
-	status = 2
