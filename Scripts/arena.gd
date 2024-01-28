@@ -11,7 +11,13 @@ func _ready():
 func _on_goal_r_body_entered(body:Node2D):
 	if body.name == "Turkey" || body.name.contains("Turkey") || "Turkey" in body.name:
 		goal_hit.emit("right")
+		$goal2.play()
+		body.goal()
+		
 
 func _on_goal_l_body_entered(body:Node2D):
 	if body.name == "Turkey" || body.name.contains("Turkey") || "Turkey" in body.name:
 		goal_hit.emit("left")
+		$goal.play()
+		body.goal()
+		get_tree().call_group("player","goal")

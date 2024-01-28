@@ -37,8 +37,8 @@ func _process(_delta):
 @export var myplayerid:int
 func _ready():
 	$animation.play("laugh")
-	#get_node("AnimatedSprite2D").play("default")
 	$animation.play("laugh")
+	$hohoho.play()
 	
 	# Problem "gelöst". So kann er die Spawnpunkte abfangen und setzen.
 	var sp1 = $"../"/Arena/SpawnPoints/SP1
@@ -69,15 +69,13 @@ func _physics_process(_delta):
 	move_and_slide()
   
 func _on_feet_area_body_entered(body):
-	if body.name == "Turkey":
+	if body.name == "Turkey2":
 		$animation.play("kick")
-	pass # Replace with function body.
 
-
-func _on_animation_animation_looped():
-	if $animation.animation == "kick":
-		$animation.play("laugh")
-	pass # Replace with function body.
+func goal():
+	print("Player-Goal")
+	$animation.play("laugh")
+	$hohoho.play()
 	
 
 # Beispiel ist in 3D. Welche Cam in 2D. Dazu noche exit game qenn input 'quit

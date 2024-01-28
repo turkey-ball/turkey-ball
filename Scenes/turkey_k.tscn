@@ -5,11 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://bfqo0yi2mwrq" path="res://assets/sounds/turkey_scream2.wav" id="3_im5vb"]
 [ext_resource type="AudioStream" uid="uid://c3gjcuypo7rr3" path="res://assets/sounds/turkey_scream1.wav" id="4_a6ud8"]
 [ext_resource type="AudioStream" uid="uid://cf36keampgnog" path="res://assets/sounds/turkey_walk.wav" id="5_w37co"]
-[ext_resource type="Texture2D" uid="uid://dg0g1l78r3mmn" path="res://assets/pics/spritesheets/explo.png" id="6_uujyg"]
-[ext_resource type="Texture2D" uid="uid://cas6mgf6wwicn" path="res://assets/pics/spritesheets/idle.png" id="7_2jhud"]
-[ext_resource type="Texture2D" uid="uid://blirgkbic7ewr" path="res://assets/pics/spritesheets/roll.png" id="8_vvg0y"]
-[ext_resource type="Texture2D" uid="uid://y6qtumexj4dg" path="res://assets/pics/spritesheets/walk.png" id="9_mtvni"]
-[ext_resource type="Texture2D" uid="uid://dap4bohx40tya" path="res://assets/pics/spritesheets/wings.png" id="10_xxqga"]
+[ext_resource type="Texture2D" uid="uid://b4bg7c1crlg5p" path="res://assets/pics/spritesheets/explo.png" id="6_uujyg"]
+[ext_resource type="Texture2D" uid="uid://cl1upaovxvjpb" path="res://assets/pics/spritesheets/idle.png" id="7_2jhud"]
+[ext_resource type="Texture2D" uid="uid://ct3xvbbhajjt2" path="res://assets/pics/spritesheets/roll.png" id="8_vvg0y"]
+[ext_resource type="Texture2D" uid="uid://bnjaj7ohtjina" path="res://assets/pics/spritesheets/walk.png" id="9_mtvni"]
+[ext_resource type="Texture2D" uid="uid://brjbymwbrm5fv" path="res://assets/pics/spritesheets/wings.png" id="10_xxqga"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 32.0156
