@@ -46,6 +46,7 @@ label_settings = SubResource("LabelSettings_ku1yl")
 horizontal_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 700.0
 offset_top = 50.0
 offset_right = 900.0
@@ -63,6 +64,7 @@ label_settings = SubResource("LabelSettings_fsqqb")
 horizontal_alignment = 1
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1350.0
 offset_top = 50.0
 offset_right = 1550.0
@@ -80,6 +82,7 @@ label_settings = SubResource("LabelSettings_ckqhh")
 horizontal_alignment = 1
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_top = 970.0
 offset_right = 30.0
 offset_bottom = 1000.0
