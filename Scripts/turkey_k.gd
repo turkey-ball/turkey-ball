@@ -12,3 +12,5 @@ func _ready():
 	name = "Turkey"
 	pass
 	
+func goal():
+	pass
