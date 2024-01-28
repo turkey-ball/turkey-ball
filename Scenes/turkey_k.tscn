@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://0hgbeg16ga72"]
+[gd_scene load_steps=46 format=3 uid="uid://0hgbeg16ga72"]
 
 [ext_resource type="Script" path="res://Scripts/turkey_k.gd" id="1_wwfs4"]
 [ext_resource type="AudioStream" uid="uid://boc62wcemc4or" path="res://assets/sounds/turkey_woohoo.wav" id="2_4ueva"]
@@ -13,8 +13,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3lpdk"]
 radius = 32.0156
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_73ost"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivoob"]
 atlas = ExtResource("6_uujyg")
@@ -295,18 +293,15 @@ properties/8/replication_mode = 1
 properties/9/path = NodePath("animation:frame")
 properties/9/spawn = true
 properties/9/replication_mode = 1
+properties/10/path = NodePath("animation:flip_h")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [node name="Turkey" type="CharacterBody2D"]
 script = ExtResource("1_wwfs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3lpdk")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1.5, 0.499999)
-scale = Vector2(39, 39)
-texture = SubResource("PlaceholderTexture2D_73ost")
 
 [node name="whoohoo" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_4ueva")
