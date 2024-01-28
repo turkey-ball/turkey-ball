@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjd73shygkt87"]
 
-[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_ms6eq"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ms6eq"]
 [ext_resource type="Texture2D" uid="uid://bdi3gm21k5tlw" path="res://assets/pics/drop.png" id="2_u6qbt"]
 [ext_resource type="AudioStream" uid="uid://cydmbter557qr" path="res://assets/sounds/splash.wav" id="3_ys8g1"]
 
