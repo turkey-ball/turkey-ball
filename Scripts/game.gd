@@ -89,6 +89,7 @@ func _on_single_game_pressed():
 	$Ui.show()
 	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
+	# $Ui/ColorRect.hide()
 	if $Arena/Turkey != null:
 		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
@@ -128,11 +129,19 @@ func _process(_delta):
 @export var max_items : int = 10
 @export_range(0, 2) var random_timer_min : int = 0
 @export_range(8, 30) var random_timer_max : int = 10
+@export var player_spawn_connect_timeout : int = 20
 func _on_timer_timeout():
+	print("peer size: " + str(multiplayer.get_peers().size()))
+	if(multiplayer.get_peers().size() <= 0):
+		print("GAME waiting for game to start (20) ...")
+		$Timer.wait_time = player_spawn_connect_timeout
+		$Timer.start()
+		return
+	
 	if collectibles.size() == 0 || !spawn_collectibles:
 		# Fehler ausgeben und Timer neu setzen
 		print("GAME collectibles empty or can not spawn collectibles")
-		$Timer.Start()
+		$Timer.start()
 		return
 	
 	if max_items != null && $Arena/Collectibles.get_child_count() >= max_items:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn5lgltdwtpid"]
+[gd_scene load_steps=9 format=3 uid="uid://cn5lgltdwtpid"]
 
 [ext_resource type="Script" path="res://Scripts/BoxInGlove.gd" id="1_dirpb"]
-[ext_resource type="Script" path="res://Scripts/1.gd" id="2_h7xc4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3553t"]
 
@@ -22,12 +21,7 @@ b = Vector2(0, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqjeu"]
 radius = 10.8365
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nwlh4"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_862t1"]
-
 [node name="BoxInGlove" type="Node2D"]
-position = Vector2(260, 319)
 script = ExtResource("1_dirpb")
 
 [node name="Spring" type="Line2D" parent="."]
@@ -37,7 +31,7 @@ points = PackedVector2Array(101.33, 2.70399, 118.417, 1.20015)
 texture = SubResource("PlaceholderTexture2D_3553t")
 
 [node name="Box" type="StaticBody2D" parent="."]
-position = Vector2(27, -7.99999)
+position = Vector2(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 scale = Vector2(45.5, 51.5)
@@ -48,7 +42,7 @@ position = Vector2(-1, -7.62939e-06)
 shape = SubResource("RectangleShape2D_ju63d")
 
 [node name="Glove" type="RigidBody2D" parent="."]
-position = Vector2(25, -16)
+position = Vector2(0, -8)
 
 [node name="Sprite2D" type="Sprite2D" parent="Glove"]
 position = Vector2(0, -3.8147e-06)
@@ -59,7 +53,7 @@ texture = SubResource("PlaceholderTexture2D_hvqvp")
 shape = SubResource("CircleShape2D_pebp7")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2(25, -6)
+position = Vector2(-1.90735e-06, 4.76837e-07)
 rotation = 3.10748
 node_a = NodePath("../Box")
 node_b = NodePath("../Glove")
@@ -68,15 +62,8 @@ rest_length = 50.0
 stiffness = 19.4
 damping = 0.09
 
-[node name="Button" type="Button" parent="."]
-offset_left = -243.0
-offset_top = -240.0
-offset_right = -147.0
-offset_bottom = -209.0
-scale = Vector2(1.16886, 1.9013)
-text = "Drück mich"
-
 [node name="InitialCage" type="Node2D" parent="."]
+position = Vector2(-28, 7)
 
 [node name="CageL" type="StaticBody2D" parent="InitialCage"]
 position = Vector2(5, 0)
@@ -105,31 +92,13 @@ rotation = -1.56932
 shape = SubResource("SegmentShape2D_kmrlj")
 
 [node name="GloveTrigger" type="Area2D" parent="."]
-position = Vector2(26, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GloveTrigger"]
 scale = Vector2(4.11968, 4.11968)
 shape = SubResource("CircleShape2D_dqjeu")
 
-[node name="1" type="CharacterBody2D" parent="."]
-position = Vector2(-53, -6)
-scale = Vector2(2.83333, 2.83333)
-motion_mode = 1
-script = ExtResource("2_h7xc4")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="1"]
-shape = SubResource("CircleShape2D_nwlh4")
-
-[node name="Sprite2D" type="Sprite2D" parent="1"]
-scale = Vector2(12.3333, 13)
-texture = SubResource("PlaceholderTexture2D_862t1")
-
-[node name="CageD" type="StaticBody2D" parent="."]
-position = Vector2(-44, 31)
-rotation = -1.56932
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CageD"]
-shape = SubResource("SegmentShape2D_kmrlj")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="GloveTrigger" to="." method="_on_glove_trigger_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

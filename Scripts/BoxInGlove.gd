@@ -14,10 +14,15 @@ func _on_button_pressed():
 
 
 func _on_glove_trigger_body_entered(body):
-	if !$InitialCage:
+	if !get_node("InitialCage"):
 		return
 	if !body.name.to_int():
 		return
 
 	$InitialCage.queue_free()
-	$Glove.apply_impulse(Vector2(0, -1000))
+	$Glove.apply_impulse(body.position * 60)
+	$Timer.start()
+
+
+func _on_timer_timeout():
+	queue_free()

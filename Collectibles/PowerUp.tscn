@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c70opf03qerse"]
+
+[ext_resource type="Script" path="res://Collectibles/PowerUp.gd" id="1_uh02n"]
+[ext_resource type="Texture2D" uid="uid://cf1wni4yflinj" path="res://Collectibles/PowerUpTexture.jpg" id="2_u2qne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc4w2"]
+size = Vector2(47, 45)
+
+[node name="PowerUp" type="Node2D"]
+visible = false
+script = ExtResource("1_uh02n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -24.0
+offset_top = -21.0
+offset_right = 1000.0
+offset_bottom = 1003.0
+scale = Vector2(0.0454067, 0.0436978)
+texture = ExtResource("2_u2qne")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_sc4w2")
+
+[node name="CastU" type="RayCast2D" parent="Area2D"]
+target_position = Vector2(0, 23)
+hit_from_inside = true
+
+[node name="CastR" type="RayCast2D" parent="Area2D"]
+target_position = Vector2(23, 0)
+
+[node name="CastL" type="RayCast2D" parent="Area2D"]
+target_position = Vector2(-24, 0)
+
+[node name="CastO" type="RayCast2D" parent="Area2D"]
+target_position = Vector2(0, -21)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

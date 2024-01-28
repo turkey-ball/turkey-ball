@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjojb4dx085sx"]
+[gd_scene load_steps=9 format=3 uid="uid://bjojb4dx085sx"]
 
 [ext_resource type="PackedScene" uid="uid://s36l2vrgxmdi" path="res://Scenes/arena.tscn" id="1_goens"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_sa265"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsilfbvb5t08r" path="res://Scenes/player.tscn" id="2_so3og"]
 [ext_resource type="PackedScene" uid="uid://bd3r5eky344wd" path="res://Scenes/turkey.tscn" id="3_itfda"]
 [ext_resource type="PackedScene" uid="uid://0hgbeg16ga72" path="res://Scenes/turkey_k.tscn" id="4_q7i6o"]
+[ext_resource type="PackedScene" uid="uid://c70opf03qerse" path="res://Collectibles/PowerUp.tscn" id="5_dxqiq"]
 [ext_resource type="PackedScene" uid="uid://cijrxo2qxahpu" path="res://Scenes/Menu.tscn" id="5_lty0h"]
 
 [node name="Game" type="Node"]
@@ -14,7 +15,10 @@ player_scene = ExtResource("2_so3og")
 turkey_scene = ExtResource("3_itfda")
 turkey_scene2 = ExtResource("4_q7i6o")
 spawn_collectibles = true
-collectibles = Array[PackedScene]([ExtResource("4_q7i6o")])
+collectibles = Array[PackedScene]([ExtResource("5_dxqiq")])
+max_items = 999
+random_timer_max = 8
+player_spawn_connect_timeout = 1
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
