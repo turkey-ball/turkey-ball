@@ -15,13 +15,10 @@ player_scene = ExtResource("2_so3og")
 turkey_scene = ExtResource("3_itfda")
 turkey_scene2 = ExtResource("4_q7i6o")
 spawn_collectibles = true
-<<<<<<< Updated upstream
-=======
 collectibles = Array[PackedScene]([ExtResource("5_dxqiq")])
 max_items = 999
 random_timer_max = 8
 player_spawn_connect_timeout = 1
->>>>>>> Stashed changes
 
 [node name="Arena" parent="." instance=ExtResource("1_goens")]
 
