@@ -34,7 +34,8 @@ func _on_host_pressed():
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "H"
-	$Arena/Turkey.queue_free()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene.instantiate()
 	turkey.name = "Turkey"
 	$Arena.call_deferred("add_child", turkey)
@@ -42,11 +43,13 @@ func _on_host_pressed():
 func _on_join_pressed(ip = "127.0.0.1"):
 	peer.create_client(ip, 1337)
 	multiplayer.multiplayer_peer = peer
+	multiplayer.server_disconnected.connect(_back_to_menu)
 	$LkmpMenuTest.hide()
 	$Arena.show()
 	$Ui.show()
 	$Ui/RunType.text = "C"
-	$Arena/Turkey.queue_free()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
 	var turkey = turkey_scene2.instantiate()
 	turkey.name = "Turkey"
 	$Arena.call_deferred("add_child", turkey)
@@ -72,7 +75,6 @@ func _del_player(id):
 
 func _on_activate_toggled(toggled_on):
 	print("toggle:" + str(toggled_on))
-	
 	var tk = $Arena/Turkey
 	tk.haveChaosMode = toggled_on
 	pass # Replace with function body.
@@ -86,3 +88,32 @@ func _on_single_game_pressed():
 	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
 	add_player()
+
+func _back_to_menu():
+	# Player aus dem Spiel entfernen
+	for child in get_children():
+		if child.get_class() == "CharacterBody2D":
+			exit_game(int(str(child.name)))
+			child.queue_free()
+	
+	# Turkey aus der Arena entfernen
+	for child in $Arena.get_children():
+		if child.get_class() == "RigidBody2D" || child.get_class() == "CharacterBody2D":
+			child.queue_free()
+	
+	$LkmpMenuTest.show()
+	$Arena.hide()
+	$Ui.hide()
+	pass
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if $Arena.visible:
+			peer.close()
+			_back_to_menu()
+			
+			# Dem Spieler mitteilen ins Menü zurückzukehren und
+		# Beim Menü das Spiel beenden!
+		elif $LkmpMenuTest.visible:
+			get_tree().quit(0)
+	pass
