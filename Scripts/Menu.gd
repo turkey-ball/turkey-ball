@@ -15,15 +15,16 @@ func _on_join_pressed():
 	$"../"._on_join_pressed(ip)
 
 
-# Single Player Spiel starten??
-#func _on_single_game_pressed():
-	#load(res://game.tscn)
-	# pass # Replace with function body.
-
-
 func _on_single_game_pressed():
 	$"../"._on_single_game_pressed()
 
 
-func _on_activate_pressed():
-	$"../"._on_activate_pressed()
+func _on_chaos_mode_toggled(toggled_on):
+	if toggled_on == true:
+		$"../"._on_activate_toggled()
+	# $"../"._on_activate_pressed()
+
+
+func _on_exit_pressed():
+	pass
+
