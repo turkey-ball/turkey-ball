@@ -87,6 +87,11 @@ func _on_single_game_pressed():
 	$Ui.show()
 	$Ui/RunType.text = "S"
 	$Ui/ScoreL.hide()
+	if $Arena/Turkey != null:
+		$Arena/Turkey.queue_free()
+	var turkey = turkey_scene.instantiate()
+	turkey.name = "Turkey"
+	$Arena.call_deferred("add_child", turkey)
 	add_player()
 
 func _back_to_menu():
@@ -111,8 +116,6 @@ func _process(delta):
 		if $Arena.visible:
 			peer.close()
 			_back_to_menu()
-			
-			# Dem Spieler mitteilen ins Menü zurückzukehren und
 		# Beim Menü das Spiel beenden!
 		elif $LkmpMenuTest.visible:
 			get_tree().quit(0)
