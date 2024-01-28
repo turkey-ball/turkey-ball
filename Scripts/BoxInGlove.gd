@@ -14,7 +14,7 @@ func _on_button_pressed():
 
 
 func _on_glove_trigger_body_entered(body):
-	if !$InitialCage:
+	if !get_node("InitialCage"):
 		return
 	if !body.name.to_int():
 		return
