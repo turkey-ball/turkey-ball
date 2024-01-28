@@ -11,21 +11,6 @@ func _ready():
 	$Ui.hide()
 	$LkmpMenuTest.show()
 
-'''
-func _physics_process(_delta):
-	var direction_horizontal = Input.get_axis("ui_left", "ui_right")
-	var direction_vertical = Input.get_axis("ui_up", "ui_down")
-	if direction_horizontal:
-		$Arena/Player.velocity.x = direction_horizontal * SPEED
-	else:
-		$Arena/Player.velocity.x = 0
-	if direction_vertical:
-		$Arena/Player.velocity.y = direction_vertical * SPEED
-	else:
-		$Arena/Player.velocity.y = 0
-
-	$Arena/Player.move_and_slide()
-	'''
 
 func _on_arena_goal_hit(side):
 	if side == 'left':

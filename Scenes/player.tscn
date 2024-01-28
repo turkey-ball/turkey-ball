@@ -1,12 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsilfbvb5t08r"]
+[gd_scene load_steps=30 format=3 uid="uid://dsilfbvb5t08r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_3yj7q"]
 [ext_resource type="Texture2D" uid="uid://1jijl5y5y1rn" path="res://assets/pics/spritesheets/clown_kick.png" id="2_av50b"]
 [ext_resource type="Texture2D" uid="uid://d3hyan3c7mhdt" path="res://assets/pics/spritesheets/clown_laugh.png" id="3_p4gks"]
 [ext_resource type="Texture2D" uid="uid://8usa6jwskw7k" path="res://assets/pics/spritesheets/clown_walk.png" id="4_n1act"]
+[ext_resource type="AudioStream" uid="uid://cttnuusu1sw2i" path="res://assets/sounds/clown_laugh_hohoho.wav" id="5_0r8cb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0086a"]
-size = Vector2(85.5, 113)
+size = Vector2(27, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia2kn"]
 atlas = ExtResource("2_av50b")
@@ -160,7 +161,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqyve"]
-radius = 187.024
+radius = 83.0542
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s4uwx"]
 properties/0/path = NodePath(".:position")
@@ -184,16 +185,16 @@ height = 85.7538
 script = ExtResource("1_3yj7q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_0086a")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(14, 8)
+position = Vector2(0, 2)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_gf3j2")
-animation = &"walk"
+animation = &"kick"
 frame = 1
-frame_progress = 0.416539
+frame_progress = 0.511901
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -206,13 +207,16 @@ shape = SubResource("CircleShape2D_oqyve")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_s4uwx")
 
-[node name="feet_area" type="Area2D" parent="."]
+[node name="feet_area" type="Area2D" parent="." groups=["player"]]
 position = Vector2(11, -1)
 
 [node name="feet" type="CollisionShape2D" parent="feet_area"]
 position = Vector2(-14, 34)
 rotation = 1.53764
 shape = SubResource("CapsuleShape2D_u4cv8")
+
+[node name="hohoho" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0r8cb")
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
 [connection signal="animation_looped" from="animation" to="." method="_on_animation_animation_looped"]
