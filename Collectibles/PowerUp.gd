@@ -44,7 +44,11 @@ func _process(_delta):
 				
 				collider_object.scale.x = randi_range(1,2)
 				collider_object.scale.y = randi_range(1,2)
-		_set_position()
+		# Damit die Bullet nicht das PowerUp "aufsammelt"
+		if (collider_object.name != null &&
+				!collider_object.name.contains("Bullet") &&
+				!collider_object.name.contains("CharacterBody2D")):
+			_set_position()
 	else:
 		# Kein herumspringen im Spiel, wenn das PowerUp NICHT aktiv ist
 		if !ist_active:

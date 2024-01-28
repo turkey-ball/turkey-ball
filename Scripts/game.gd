@@ -17,7 +17,6 @@ func _on_arena_goal_hit(side):
 		$Ui.score_l += 1
 	elif side == 'right':
 		$Ui.score_r += 1
-	
 
 ### Multiplayer Logik ###
 var peer = ENetMultiplayerPeer.new()
@@ -79,11 +78,10 @@ func _on_activate_toggled(toggled_on):
 		print("GAME turkey toggled")
 		var tk = $Arena/Turkey
 		tk.haveChaosMode = toggled_on
-	pass # Replace with function body.
-
 
 ### Singleplayer ###
 func _on_single_game_pressed():
+	is_singleplayer_active = true
 	$Menu.hide()
 	$Arena.show()
 	$Ui.show()
@@ -113,15 +111,16 @@ func _back_to_menu():
 	$Arena.hide()
 	$Ui.hide()
 
+var is_singleplayer_active = false
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
+		is_singleplayer_active = false
 		if $Arena.visible:
 			peer.close()
 			_back_to_menu()
 		# Beim Menü das Spiel beenden!
 		elif $Menu.visible:
 			get_tree().quit(0)
-	pass
 
 ### Collectible logic ###
 @export var spawn_collectibles : bool
@@ -132,7 +131,7 @@ func _process(_delta):
 @export var player_spawn_connect_timeout : int = 20
 func _on_timer_timeout():
 	print("peer size: " + str(multiplayer.get_peers().size()))
-	if(multiplayer.get_peers().size() <= 0):
+	if(multiplayer.get_peers().size() <= 0 && !is_singleplayer_active):
 		print("GAME waiting for game to start (20) ...")
 		$Timer.wait_time = player_spawn_connect_timeout
 		$Timer.start()
