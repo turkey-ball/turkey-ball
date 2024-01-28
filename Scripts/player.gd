@@ -55,7 +55,10 @@ func _physics_process(_delta):
 	if !is_multiplayer_authority():
 		return
 	
-	# Get the input direction and handle the movement/deceleration.
+	if Input.is_action_just_pressed("click"):
+		shoot()
+	$watergun.look_at(get_viewport().get_mouse_position())
+		# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_horizontal = Input.get_axis("ui_left", "ui_right")
 	var direction_vertical = Input.get_axis("ui_up", "ui_down")
@@ -82,30 +85,17 @@ func goal():
 func shoot():
 	if !is_multiplayer_authority():
 		return
-	var b = preload("res://Scenes/bullet.tscn").instantiate()
-	add_child(b)
+	var b = preload("res://Scenes/bullet.tscn").instantiate()	
 	b.global_position = $watergun.global_position
-	b.direction = velocity.normalized()
+	b.rotation_degrees = $watergun.rotation_degrees
+	b.player_name = self.name
+	get_tree().root.add_child(b)
 	if velocity == Vector2(0,0) and $animation.flip_h:		
-		b.direction = Vector2(-1,0)
+		#b.direction = Vector2(-1,0)
 		b.global_position[0] = b.global_position[0] - 40
-	elif velocity == Vector2(0,0) and !$animation.flip_h:
-		b.direction = Vector2(1,0)
+	#elif velocity == Vector2(0,0) and !$animation.flip_h:
+		#b.direction = Vector2(1,0)
 	
-	
-	
-	
-func _input(ev):
-	if Input.is_key_pressed(KEY_SPACE):
-		shoot()
-		$watergun.play("default")
-# Beispiel ist in 3D. Welche Cam in 2D. Dazu noche exit game qenn input 'quit
-# und physics process when multiplayer authority ...
-# https://www.youtube.com/watch?v=M0LJ9EsS_Ak
-#func _ready():
-#	cam.current = is_multiplayer_authority()
-
-
 
 func _on_watergun_animation_finished():
 	$watergun.pause("default")
