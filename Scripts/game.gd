@@ -74,9 +74,11 @@ func _del_player(id):
 	get_node(str(id)).queue_free()
 
 func _on_activate_toggled(toggled_on):
-	print("toggle:" + str(toggled_on))
-	var tk = $Arena/Turkey
-	tk.haveChaosMode = toggled_on
+	print("GAME chaos toggle:" + str(toggled_on))
+	if $Arena/Turkey != null:
+		print("GAME turkey toggled")
+		var tk = $Arena/Turkey
+		tk.haveChaosMode = toggled_on
 	pass # Replace with function body.
 
 
