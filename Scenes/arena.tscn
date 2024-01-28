@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://s36l2vrgxmdi"]
+[gd_scene load_steps=9 format=3 uid="uid://s36l2vrgxmdi"]
 
 [ext_resource type="Script" path="res://Scripts/arena.gd" id="1_6hnq8"]
 [ext_resource type="Texture2D" uid="uid://3lja6v4xchsm" path="res://assets/pics/background.png" id="2_84uby"]
 [ext_resource type="AudioStream" uid="uid://88efe6jy8qub" path="res://assets/sounds/background.wav" id="2_d8ia7"]
 [ext_resource type="AudioStream" uid="uid://jnwcsa8beexv" path="res://assets/sounds/background2.wav" id="3_v2gyn"]
+[ext_resource type="AudioStream" uid="uid://4cdpf88pb7kf" path="res://assets/sounds/background12.ogg" id="5_70xk1"]
 [ext_resource type="AudioStream" uid="uid://cyr1cv0b3d4ul" path="res://assets/sounds/crowd_goal.wav" id="5_hr1t2"]
 [ext_resource type="AudioStream" uid="uid://d2aol2pnfsdx4" path="res://assets/sounds/crowd_goal2.wav" id="6_rjhl0"]
 
@@ -27,11 +28,16 @@ position = Vector2(-61, 0)
 polygon = PackedVector2Array(1431, 203, 1599, 892, 1540, 961, 260, 966, 198, 874, 263.862, 585.153, 351, 203, 420, 162, 3, 4, 3, 1023, 1792, 1023, 1787, -4, 3, 1, 420, 164, 1362, 162)
 
 [node name="background_sound1" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("2_d8ia7")
 autoplay = true
 
 [node name="background_sound2" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("3_v2gyn")
+
+[node name="background_sound_loop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_70xk1")
 
 [node name="GoalL" type="Area2D" parent="."]
 scale = Vector2(0.965, 0.965)
