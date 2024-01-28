@@ -57,6 +57,7 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("click"):
 		shoot()
+		#rpc("shoot_rpc")
 	$watergun.look_at(get_viewport().get_mouse_position())
 		# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -81,7 +82,8 @@ func goal():
 	print("Player-Goal")
 	$animation.play("laugh")
 	$hohoho.play()
-	
+
+'''
 func shoot():
 	if !is_multiplayer_authority():
 		return
@@ -95,7 +97,30 @@ func shoot():
 		b.global_position[0] = b.global_position[0] - 40
 	#elif velocity == Vector2(0,0) and !$animation.flip_h:
 		#b.direction = Vector2(1,0)
-	
+'''
 
 func _on_watergun_animation_finished():
 	$watergun.pause("default")
+
+func shoot():
+	rpc("_shoot")
+
+# RPC TEST???
+@rpc("any_peer", "call_local")
+func _shoot():
+	print("RPC CALLED!?")
+
+	var b = preload("res://Scenes/bullet.tscn").instantiate()	
+	b.global_position = $watergun.global_position
+	b.rotation_degrees = $watergun.rotation_degrees
+	b.player_name = self.name
+	get_tree().root.add_child(b)
+	if velocity == Vector2(0,0) and $animation.flip_h:		
+		#b.direction = Vector2(-1,0)
+		b.global_position[0] = b.global_position[0] - 40
+		
+	var peer_id = multiplayer.get_remote_sender_id()
+	if peer_id == get_multiplayer_authority():
+		# The authority is not allowed to call this function.
+		return
+	print("RPC called by: ", peer_id)

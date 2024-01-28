@@ -136,7 +136,7 @@ func _process(_delta):
 func _on_timer_timeout():
 	print("peer size: " + str(multiplayer.get_peers().size()))
 	if(multiplayer.get_peers().size() <= 0 && !is_singleplayer_active):
-		print("GAME waiting for game to start (20) ...")
+		print("GAME waiting for game to start ("+str(player_spawn_connect_timeout)+") ...")
 		$Timer.wait_time = player_spawn_connect_timeout
 		$Timer.start()
 		return
@@ -153,14 +153,46 @@ func _on_timer_timeout():
 	
 	# Random platzieren von items...
 	if collectibles.size() > 0 && spawn_collectibles:
-		var _sel_item = collectibles[randi_range(0, collectibles.size() - 1)]
-		if _sel_item != null:
-			var item = _sel_item.instantiate()
-			item.name = "Collectible"
-			$Arena/Collectibles.call_deferred("add_child", item)
-			print("GAME collectible '"+str(item.name)+"' spawned")
-		else:
-			print("GAME collectible was empty and could not be spawned")
+		# Geändert wegen RPC??
+		create_powerup(randi_range(0, collectibles.size() - 1))
+		#var _sel_item = collectibles[randi_range(0, collectibles.size() - 1)]
+		#if _sel_item != null:
+		#	var item = _sel_item.instantiate()
+		#	item.name = "Collectible"
+		#	$Arena/Collectibles.call_deferred("add_child", item)
+		#	print("GAME collectible '"+str(item.name)+"' spawned")
+		#	#create_powerup(item)
+		#else:
+		#	print("GAME collectible was empty and could not be spawned")
 		$Timer.wait_time = randi_range(random_timer_min, random_timer_max)
 		print("GAME timer reset with: " + str($Timer.wait_time))
 		$Timer.start() # reset?
+
+func create_powerup(rng):
+	rpc("_create_powerup", rng)
+
+@rpc("any_peer", "call_local")
+func _create_powerup(rng):
+	var _sel_item = collectibles[rng]
+	if _sel_item != null:
+		var item = _sel_item.instantiate()
+		item.name = "Collectible"
+		$Arena/Collectibles.call_deferred("add_child", item)
+		print("GAME collectible '"+str(item.name)+"' spawned")
+		#create_powerup(item)
+	else:
+		print("GAME collectible was empty and could not be spawned")
+	
+
+'''
+func create_powerup(item):
+	rpc("_create_powerup", item)
+
+@rpc("any_peer", "call_local")
+func _create_powerup(_sel_item):
+	var item = _sel_item.instantiate()
+	item.name = "Collectible"
+	$Arena/Collectibles.call_deferred("add_child", item)
+	print("GAME collectible '"+str(item.name)+"' spawned")
+	pass
+'''

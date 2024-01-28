@@ -56,7 +56,8 @@ func _process(_delta):
 				collider_object.scale.y = randi_range(1,2)
 		
 		# Damit die Bullet nicht das PowerUp "aufsammelt"
-		if (collider_object.name != null &&
+		
+		if (collider_object != null && collider_object.name != null &&
 				!collider_object.name.contains("Bullet") &&
 				!collider_object.name.contains("CharacterBody2D")):
 			_set_position()
