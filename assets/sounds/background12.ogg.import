@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/background12.ogg-ed06269bf6963558c276f4d2de25
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
