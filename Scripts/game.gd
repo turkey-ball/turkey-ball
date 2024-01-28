@@ -10,7 +10,7 @@ func _ready():
 	$Arena.hide()
 	$Ui.hide()
 	$LkmpMenuTest.show()
-
+	$Timer.start()
 
 func _on_arena_goal_hit(side):
 	if side == 'left':
@@ -121,3 +121,34 @@ func _process(_delta):
 		elif $LkmpMenuTest.visible:
 			get_tree().quit(0)
 	pass
+
+### Collectible logic ###
+@export var spawn_collectibles : bool
+@export var collectibles : Array[PackedScene]
+@export var max_items : int = 10
+@export_range(0, 2) var random_timer_min : int = 0
+@export_range(8, 30) var random_timer_max : int = 10
+func _on_timer_timeout():
+	if collectibles.size() == 0 || !spawn_collectibles:
+		# Fehler ausgeben und Timer neu setzen
+		print("GAME collectibles empty or can not spawn collectibles")
+		$Timer.Start()
+		return
+	
+	if max_items != null && $Arena/Collectibles.get_child_count() >= max_items:
+		print("GAME max items ("+str(max_items)+") spawned. Collect or destroy existing items.")
+		return
+	
+	# Random platzieren von items...
+	if collectibles.size() > 0 && spawn_collectibles:
+		var _sel_item = collectibles[randi_range(0, collectibles.size() - 1)]
+		if _sel_item != null:
+			var item = _sel_item.instantiate()
+			item.name = "Collectible"
+			$Arena/Collectibles.call_deferred("add_child", item)
+			print("GAME collectible '"+str(item.name)+"' spawned")
+		else:
+			print("GAME collectible was empty and could not be spawned")
+		$Timer.wait_time = randi_range(random_timer_min, random_timer_max)
+		print("GAME timer reset with: " + str($Timer.wait_time))
+		$Timer.start() # reset?
