@@ -1,6 +1,5 @@
 extends Node2D
 
-
 signal goal_hit(side: String)
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +12,6 @@ func _on_goal_r_body_entered(body:Node2D):
 		goal_hit.emit("right")
 		$goal2.play()
 		body.goal()
-		
 
 func _on_goal_l_body_entered(body:Node2D):
 	if body.name == "Turkey" || body.name.contains("Turkey") || "Turkey" in body.name:
