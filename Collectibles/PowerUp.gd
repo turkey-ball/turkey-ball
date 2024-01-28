@@ -42,6 +42,16 @@ func _process(_delta):
 				ist_active = true
 				$Timer.start()
 				
+				# Anzeigen der PowerUps in der UI
+				var text = $TextureRect.texture
+				if int(str(collider_object.name)) == 1: # Server Spieler
+					get_node("/root/Game/Ui/PowerUpDisplayRectP1").set_texture(text)
+					get_node("/root/Game/Ui/PowerUpDisplayRectP1").expand = true
+				else: # Client Spieler
+					get_node("/root/Game/Ui/PowerUpDisplayRectP2").set_texture(text)
+					get_node("/root/Game/Ui/PowerUpDisplayRectP2").expand = true
+				
+				# Power Up zum Verändern der Größe
 				collider_object.scale.x = randi_range(1,2)
 				collider_object.scale.y = randi_range(1,2)
 		# Damit die Bullet nicht das PowerUp "aufsammelt"
@@ -66,3 +76,4 @@ func _on_timer_timeout():
 	collider_object.scale.x = 1
 	collider_object.scale.y = 1
 	queue_free()
+	get_node("/root/Game/Ui/PowerUpDisplayRectP1").set_texture(null)
